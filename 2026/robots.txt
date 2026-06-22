@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.intdatacon.com/sitemap.xml
+Sitemap: https://www.intdatacon.com/2026/sitemap.xml
