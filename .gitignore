@@ -1,0 +1,9 @@
+# Claude Code internal data (do not publish)
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*~
