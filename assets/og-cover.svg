@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="ICCCMLA 2026">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A5A8C"/>
+      <stop offset="0.55" stop-color="#00629B"/>
+      <stop offset="1" stop-color="#00314D"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.1" r="0.6">
+      <stop offset="0" stop-color="#0086D1" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#0086D1" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.6" fill="#ffffff" fill-opacity="0.10"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- logo mark -->
+  <g transform="translate(80,74)">
+    <circle cx="34" cy="34" r="33" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.25"/>
+    <g stroke="#CDE6F7" stroke-opacity="0.6" stroke-width="1.4">
+      <line x1="22" y1="26" x2="34" y2="20"/><line x1="22" y1="26" x2="34" y2="34"/><line x1="22" y1="26" x2="34" y2="48"/>
+      <line x1="22" y1="42" x2="34" y2="20"/><line x1="22" y1="42" x2="34" y2="34"/><line x1="22" y1="42" x2="34" y2="48"/>
+      <line x1="34" y1="20" x2="46" y2="26"/><line x1="34" y1="20" x2="46" y2="42"/>
+      <line x1="34" y1="34" x2="46" y2="26"/><line x1="34" y1="34" x2="46" y2="42"/>
+      <line x1="34" y1="48" x2="46" y2="26"/><line x1="34" y1="48" x2="46" y2="42"/>
+    </g>
+    <g fill="#ffffff"><circle cx="22" cy="26" r="3"/><circle cx="22" cy="42" r="3"/><circle cx="34" cy="20" r="3"/><circle cx="34" cy="48" r="3"/><circle cx="46" cy="26" r="3"/><circle cx="46" cy="42" r="3"/></g>
+    <circle cx="34" cy="34" r="4.2" fill="#E3AD31"/>
+    <text x="92" y="44" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="22" letter-spacing="4" fill="#9FC3DA">IEEE · ICCCMLA</text>
+  </g>
+
+  <text x="80" y="290" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="118" fill="#ffffff" letter-spacing="-2">ICCCMLA 2026</text>
+  <rect x="84" y="322" width="176" height="8" rx="4" fill="#E3AD31"/>
+
+  <text x="84" y="392" font-family="Arial, Helvetica, sans-serif" font-size="37" fill="#D7E6F2">IEEE 8th International Conference on Cybernetics,</text>
+  <text x="84" y="440" font-family="Arial, Helvetica, sans-serif" font-size="37" fill="#D7E6F2">Cognition &amp; Machine Learning Applications</text>
+
+  <text x="84" y="520" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="40" fill="#E3AD31">October 5–6, 2026   •   Germany   •   Hybrid</text>
+
+  <text x="84" y="576" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="23" fill="#9FC3DA">Record #71579  •  Technically Co-Sponsored by the IEEE Germany Section</text>
+</svg>

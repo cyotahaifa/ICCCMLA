@@ -2,40 +2,52 @@
 
 Static website for the **IEEE International Conference on Cybernetics, Cognition and Machine Learning Applications (ICCCMLA)**.
 
-Each edition lives in its **own folder**, so future editions are easy to add and maintain without touching past ones.
+## How it's organized
 
-## Structure
+- **Repo root** = the **live, current edition**, served at clean URLs
+  (`https://www.intdatacon.com/`, `/committee.html`, …).
+- **`2026/`** = a frozen **archive copy** of the 2026 edition, also reachable at
+  `https://www.intdatacon.com/2026/`.
+- Each future edition keeps its own `YYYY/` archive folder; the **newest edition
+  always lives at the root** so the domain shows it with clean URLs.
 
 ```
 ICCCMLA/
-├── 2026/        ← 8th edition · Germany · Oct 5–6, 2026  (current)
-├── 2027/        ← add the next edition here (copy 2026 and update)
+├── index.html, *.html, app.js, styles.css, assets/   ← LIVE site (current edition)
+├── 2026/                                              ← frozen 2026 archive (/2026/)
+├── CNAME                                              ← www.intdatacon.com
 └── README.md
 ```
 
-## The 2026 site
+## Editing the live site
 
-Plain **HTML / CSS / JS** — no build step, no dependencies. Open `2026/index.html`
-in a browser, or serve the `2026/` folder with any static host.
+Edit the files at the **repo root** — that's what visitors see. To keep the 2026
+archive in sync after edits (optional during 2026, required before launching the
+next edition so 2026 stays frozen):
 
-- **Pages:** `index`, `about`, `call-for-papers`, `author-instructions`,
-  `committee`, `registration`, `sponsors`, `contact`, `privacy`, `terms`, `refund`
-- The **header, footer, and IEEE branding** are injected on every page by `2026/app.js`
-  (single source of truth — edit nav/footer once).
-- Styling in `2026/styles.css`; logos and brand assets in `2026/assets/`.
+```sh
+cp *.html app.js styles.css robots.txt sitemap.xml 2026/
+cp -r assets 2026/
+```
 
-## Adding a new edition
+## Launching the next edition (e.g. 2027)
 
-1. Copy the latest edition folder: `cp -r 2026 2027`
-2. In `2027/`, update: dates, venue, committee, fees, proceedings links, the
-   IEEE Conference Record number, and the `canonical` / `og:` URLs.
-3. Point the live domain at the new edition when ready.
+1. Sync the current site into `2026/` (command above) to freeze the 2026 archive.
+2. Update the **root** files for 2027 — dates, committee, fees, IEEE Conference
+   Record number, and the `canonical` / `og:` URLs.
+3. Commit & push. GitHub Pages redeploys automatically (~1 min).
+
+## Stack
+
+Plain **HTML / CSS / JS**, no build step. The header, footer, and IEEE branding are
+injected on every page by `app.js` (single source of truth). Pages: `index`,
+`about`, `call-for-papers`, `author-instructions`, `committee`, `registration`,
+`sponsors`, `contact`, `privacy`, `terms`, `refund`.
 
 ## Deployment
 
-Planned: **GitHub Pages → www.intdatacon.com** (to be configured).
-For free GitHub Pages the repository must be **public**; a `CNAME` file with the
-domain is added at the served root when the domain is connected.
+**GitHub Pages → www.intdatacon.com** (custom domain via `CNAME`, HTTPS enforced).
+`.nojekyll` makes Pages serve files as-is.
 
 ## Contact
 
