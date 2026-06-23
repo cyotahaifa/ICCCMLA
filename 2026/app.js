@@ -55,7 +55,7 @@
     return '' +
       '<a class="skip-link" href="#main">Skip to content</a>' +
       '<div class="topbar">' +
-        '<span class="topbar__txt">An IEEE Conference · Record #71579 · Technically Co-Sponsored by the IEEE Germany Section</span>' +
+        '<span class="topbar__txt">An IEEE Conference · <a href="https://conferences.ieee.org/conferences_events/conferences/conferencedetails/71579" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Record #71579</a> · Technically Co-Sponsored by the IEEE Germany Section</span>' +
         '<span class="topbar__logos">' +
           '<img src="assets/ieee-logo.svg" alt="IEEE" />' +
           '<img src="assets/IEEE-Germany-Logo.webp" alt="IEEE Germany Section" />' +
@@ -82,13 +82,13 @@
         '<img class="ieee-logo" src="assets/IEEE-Germany-Logo.webp" alt="IEEE Germany Section" />' +
       "</div>" +
       '<div class="ieee-band__txt"><b>An IEEE Conference · Technically Co-Sponsored by the IEEE Germany Section</b>' +
-        '<span>IEEE Conference Record #71579. Proceedings of recent editions are indexed in IEEE Xplore.</span></div>' +
+        '<span><a href="https://conferences.ieee.org/conferences_events/conferences/conferencedetails/71579" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">IEEE Conference Record #71579</a>. Proceedings of recent editions are indexed in IEEE Xplore.</span></div>' +
     "</div>" +
     '<div class="footer__top">' +
       '<div class="footer__brand">' + LOGO +
         '<span class="brand__txt">ICCCMLA<span class="brand__yr">2026</span></span>' +
         "<p>2026 IEEE 8th International Conference on Cybernetics, Cognition &amp; Machine Learning Applications.</p>" +
-        '<p class="footer__ieee">IEEE Conference Record #71579 · Technically Co-Sponsored by the IEEE Germany Section</p>' +
+        '<p class="footer__ieee"><a href="https://conferences.ieee.org/conferences_events/conferences/conferencedetails/71579" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">IEEE Conference Record #71579</a> · Technically Co-Sponsored by the IEEE Germany Section</p>' +
       "</div>" +
       '<div class="footer__cols">' +
         '<div><h4>Conference</h4><a href="about.html">About</a><a href="committee.html">Committee</a><a href="call-for-papers.html">Call for Papers</a><a href="registration.html">Proceedings</a></div>' +
