@@ -22,6 +22,14 @@
 </head>
 <body data-page="sponsors">
 <div class="grain" aria-hidden="true"></div>
+<!-- TEMP: extended-deadline announcement bar — REMOVE after 15 July 2026 -->
+<div class="annbar" id="annbar" role="region" aria-label="Deadline announcement">
+  <span>&#9200; <b>Deadline extended:</b> paper submission now closes <s>30 June</s> <b>15 July 2026</b>.</span>
+  <a class="annbar__cta" href="https://app.confconnects.com/conference/RFUUfnWqFz7xWUB91Bba" target="_blank" rel="noopener">Submit now &rarr;</a>
+  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_ext15jul','1')}catch(e){}">&times;</button>
+</div>
+<script>try{if(sessionStorage.getItem('annbar_ext15jul')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
+
 <div id="site-header"></div>
 
 <main id="main" tabindex="-1">
