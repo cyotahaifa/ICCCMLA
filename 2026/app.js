@@ -65,12 +65,12 @@
         brand() +
         '<nav class="nav__links" aria-label="Primary">' + links + "</nav>" +
         '<div class="nav__right">' +
-          '<a class="btn btn--solid js-submit" href="' + SUBMIT_URL + '" target="_blank" rel="noopener">Submit Paper</a>' +
+          '<a class="btn btn--solid js-schedule" href="about.html#dates">Schedule</a>' +
           '<button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>' +
         "</div>" +
       "</header>" +
       '<div class="mobile-menu" id="mobileMenu" aria-hidden="true">' + mlinks +
-        '<a class="btn btn--solid js-submit" href="' + SUBMIT_URL + '" target="_blank" rel="noopener">Submit Paper</a></div>';
+        '<a class="btn btn--solid js-schedule" href="about.html#dates">Schedule</a></div>';
   }
 
   function buildFooter() {

@@ -22,13 +22,13 @@
 </head>
 <body data-page="refund">
 <div class="grain" aria-hidden="true"></div>
-<!-- TEMP: extended-deadline announcement bar — REMOVE after 15 July 2026 -->
-<div class="annbar" id="annbar" role="region" aria-label="Deadline announcement">
-  <span>&#9200; <b>Deadline extended:</b> paper submission now closes <s>30 June</s> <b>15 July 2026</b>.</span>
-  <a class="annbar__cta" href="https://app.confconnects.com/conference/RFUUfnWqFz7xWUB91Bba" target="_blank" rel="noopener">Submit now &rarr;</a>
-  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_ext15jul','1')}catch(e){}">&times;</button>
+<!-- TEMP: decision-delay announcement bar — REMOVE after 10 September 2026 -->
+<div class="annbar" id="annbar" role="region" aria-label="Notification announcement">
+  <span>&#128227; <b>Notification update:</b> Due to a delay in the review process, paper decisions are delayed. Acceptance notifications will be sent by <b>10 September 2026</b>.</span>
+  <a class="annbar__cta" href="about.html#dates">Key dates &rarr;</a>
+  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_notif10sep','1')}catch(e){}">&times;</button>
 </div>
-<script>try{if(sessionStorage.getItem('annbar_ext15jul')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
+<script>try{if(sessionStorage.getItem('annbar_notif10sep')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
 
 <div id="site-header"></div>
 

@@ -22,13 +22,13 @@
 </head>
 <body data-page="cfp">
 <div class="grain" aria-hidden="true"></div>
-<!-- TEMP: extended-deadline announcement bar — REMOVE after 15 July 2026 -->
-<div class="annbar" id="annbar" role="region" aria-label="Deadline announcement">
-  <span>&#9200; <b>Deadline extended:</b> paper submission now closes <s>30 June</s> <b>15 July 2026</b>.</span>
-  <a class="annbar__cta" href="https://app.confconnects.com/conference/RFUUfnWqFz7xWUB91Bba" target="_blank" rel="noopener">Submit now &rarr;</a>
-  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_ext15jul','1')}catch(e){}">&times;</button>
+<!-- TEMP: decision-delay announcement bar — REMOVE after 10 September 2026 -->
+<div class="annbar" id="annbar" role="region" aria-label="Notification announcement">
+  <span>&#128227; <b>Notification update:</b> Due to a delay in the review process, paper decisions are delayed. Acceptance notifications will be sent by <b>10 September 2026</b>.</span>
+  <a class="annbar__cta" href="about.html#dates">Key dates &rarr;</a>
+  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_notif10sep','1')}catch(e){}">&times;</button>
 </div>
-<script>try{if(sessionStorage.getItem('annbar_ext15jul')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
+<script>try{if(sessionStorage.getItem('annbar_notif10sep')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
 
 <div id="site-header"></div>
 
@@ -96,8 +96,8 @@
   <h2 class="sec__title reveal">Submission timeline.</h2>
   <ol class="timeline">
     <li class="tl tl--hot reveal"><span class="tl__date"><span class="dot dot--hot"></span><s style="color:var(--ink-2);text-decoration:line-through;font-weight:400">Jun 30</s>&nbsp;Jul 15, 2026</span><span class="tl__title">Paper submission deadline <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--gold-deep);border:1px solid var(--gold);border-radius:999px;padding:2px 9px;margin-left:6px;white-space:nowrap">Extended</span></span><span class="tl__note">Up to 6 pages · IEEE format</span></li>
-    <li class="tl reveal" style="--d:.06s"><span class="tl__date">Aug 20, 2026</span><span class="tl__title">Acceptance notification</span><span class="tl__note">On or before this date</span></li>
-    <li class="tl reveal" style="--d:.12s"><span class="tl__date">Aug 30, 2026</span><span class="tl__title">Camera-ready &amp; registration</span><span class="tl__note">Both author deadlines fall here</span></li>
+    <li class="tl tl--hot reveal" style="--d:.06s"><span class="tl__date"><span class="dot dot--hot"></span><s style="color:var(--ink-2);text-decoration:line-through;font-weight:400">Aug 20</s>&nbsp;Sep 10, 2026</span><span class="tl__title">Acceptance notification <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--gold-deep);border:1px solid var(--gold);border-radius:999px;padding:2px 9px;margin-left:6px;white-space:nowrap">Revised</span></span><span class="tl__note">Delayed review process · on or before this date</span></li>
+    <li class="tl reveal" style="--d:.12s"><span class="tl__date"><s style="color:var(--ink-2);text-decoration:line-through;font-weight:400">Aug 30</s>&nbsp;Sep 17, 2026</span><span class="tl__title">Camera-ready &amp; registration <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--gold-deep);border:1px solid var(--gold);border-radius:999px;padding:2px 9px;margin-left:6px;white-space:nowrap">Revised</span></span><span class="tl__note">Both author deadlines fall here</span></li>
     <li class="tl tl--hot reveal" style="--d:.18s"><span class="tl__date"><span class="dot dot--hot"></span>Oct 5–6, 2026</span><span class="tl__title">The conference</span><span class="tl__note">Germany · Hybrid mode</span></li>
   </ol>
 </section>
