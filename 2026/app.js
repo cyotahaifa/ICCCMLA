@@ -97,7 +97,7 @@
       "</div>" +
     "</div>" +
     '<div class="footer__bottom"><span>© 2026 ICCCMLA. All rights reserved.</span>' +
-      '<span class="footer__legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a></span>' +
+      '<span class="footer__legal"><a href="research-integrity.html">Research Integrity</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a></span>' +
       '<span class="footer__credit">October 5–6, 2026 · Germany · Hybrid</span></div></footer>';
   }
 
