@@ -22,13 +22,13 @@
 </head>
 <body data-page="about">
 <div class="grain" aria-hidden="true"></div>
-<!-- TEMP: online-mode announcement bar — REMOVE after 6 October 2026 -->
-<div class="annbar" id="annbar" role="region" aria-label="Conference mode announcement">
-  <span>&#127760; <b>Now completely online:</b> ICCCMLA 2026 will be held entirely online on 5&ndash;6 October 2026. Please do <b>not</b> make travel or accommodation arrangements.</span>
-  <a class="annbar__cta" href="about.html#joining">How to join &rarr;</a>
-  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_online5oct','1')}catch(e){}">&times;</button>
+<!-- TEMP: decisions-sent + online-mode announcement bar — REMOVE after 6 October 2026 -->
+<div class="annbar" id="annbar" role="region" aria-label="Decisions and conference mode announcement">
+  <span>&#9989; <b>Decisions sent:</b> acceptance notifications have been emailed to all authors — please check your spam folder if you have not seen yours. &nbsp;&bull;&nbsp; &#127760; <b>Now completely online</b> — please do <b>not</b> make travel or accommodation arrangements.</span>
+  <a class="annbar__cta" href="author-instructions.html">Next steps &rarr;</a>
+  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_sent_online','1')}catch(e){}">&times;</button>
 </div>
-<script>try{if(sessionStorage.getItem('annbar_online5oct')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
+<script>try{if(sessionStorage.getItem('annbar_sent_online')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
 
 <div id="site-header"></div>
 
@@ -67,7 +67,7 @@
   <h2 class="sec__title reveal">Key milestones for ICCCMLA 2026.</h2>
   <ol class="timeline">
     <li class="tl tl--hot reveal"><span class="tl__date"><span class="dot dot--hot"></span><s style="color:var(--ink-2);text-decoration:line-through;font-weight:400">Jun 30</s>&nbsp;Jul 15, 2026</span><span class="tl__title">Paper submission deadline <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--gold-deep);border:1px solid var(--gold);border-radius:999px;padding:2px 9px;margin-left:6px;white-space:nowrap">Extended</span></span><span class="tl__note">Via the ConfConnects portal</span></li>
-    <li class="tl tl--hot reveal" style="--d:.06s"><span class="tl__date"><span class="dot dot--hot"></span><s style="color:var(--ink-2);text-decoration:line-through;font-weight:400">Aug 20</s>&nbsp;Sep 10, 2026</span><span class="tl__title">Acceptance notification <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--gold-deep);border:1px solid var(--gold);border-radius:999px;padding:2px 9px;margin-left:6px;white-space:nowrap">Revised</span></span><span class="tl__note">Delayed review process · on or before this date</span></li>
+    <li class="tl reveal" style="--d:.06s"><span class="tl__date"><s style="color:var(--ink-2);text-decoration:line-through;font-weight:400">Aug 20</s>&nbsp;Sep 10, 2026</span><span class="tl__title">Acceptance notification <span style="font-family:var(--font-mono);font-size:.72rem;color:#16653C;border:1px solid #16653C;border-radius:999px;padding:2px 9px;margin-left:6px;white-space:nowrap">Sent</span></span><span class="tl__note">Notifications emailed to all authors</span></li>
     <li class="tl reveal" style="--d:.12s"><span class="tl__date"><s style="color:var(--ink-2);text-decoration:line-through;font-weight:400">Aug 30</s>&nbsp;Sep 17, 2026</span><span class="tl__title">Camera-ready &amp; registration <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--gold-deep);border:1px solid var(--gold);border-radius:999px;padding:2px 9px;margin-left:6px;white-space:nowrap">Revised</span></span><span class="tl__note">Both author deadlines fall here</span></li>
     <li class="tl tl--hot reveal" style="--d:.18s"><span class="tl__date"><span class="dot dot--hot"></span>Oct 5–6, 2026</span><span class="tl__title">The conference</span><span class="tl__note">Completely online</span></li>
   </ol>
