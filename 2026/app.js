@@ -93,12 +93,12 @@
       '<div class="footer__cols">' +
         '<div><h4>Conference</h4><a href="about.html">About</a><a href="committee.html">Committee</a><a href="call-for-papers.html">Call for Papers</a><a href="registration.html">Proceedings</a></div>' +
         '<div><h4>Participate</h4><a class="js-submit" href="' + SUBMIT_URL + '" target="_blank" rel="noopener">Submit Paper</a><a href="author-instructions.html">Author Instructions</a><a href="registration.html">Registration</a><a href="contact.html">Contact</a></div>' +
-        '<div><h4>Conference</h4><a href="contact.html">Germany · Hybrid</a><a href="about.html">Oct 5–6, 2026</a><a href="mailto:' + EMAIL + '">' + EMAIL + "</a></div>" +
+        '<div><h4>Conference</h4><a href="contact.html">Completely online</a><a href="about.html">Oct 5–6, 2026</a><a href="mailto:' + EMAIL + '">' + EMAIL + "</a></div>" +
       "</div>" +
     "</div>" +
     '<div class="footer__bottom"><span>© 2026 ICCCMLA. All rights reserved.</span>' +
       '<span class="footer__legal"><a href="research-integrity.html">Research Integrity</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a></span>' +
-      '<span class="footer__credit">October 5–6, 2026 · Germany · Hybrid</span></div></footer>';
+      '<span class="footer__credit">October 5–6, 2026 · Completely online</span></div></footer>';
   }
 
   /* ---- behaviors ---- */

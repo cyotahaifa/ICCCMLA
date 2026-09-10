@@ -22,13 +22,13 @@
 </head>
 <body data-page="committee">
 <div class="grain" aria-hidden="true"></div>
-<!-- TEMP: decision-delay announcement bar — REMOVE after 10 September 2026 -->
-<div class="annbar" id="annbar" role="region" aria-label="Notification announcement">
-  <span>&#128227; <b>Notification update:</b> Due to a delay in the review process, paper decisions are delayed. Acceptance notifications will be sent by <b>10 September 2026</b>.</span>
-  <a class="annbar__cta" href="about.html#dates">Key dates &rarr;</a>
-  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_notif10sep','1')}catch(e){}">&times;</button>
+<!-- TEMP: online-mode announcement bar — REMOVE after 6 October 2026 -->
+<div class="annbar" id="annbar" role="region" aria-label="Conference mode announcement">
+  <span>&#127760; <b>Now completely online:</b> ICCCMLA 2026 will be held entirely online on 5&ndash;6 October 2026. Please do <b>not</b> make travel or accommodation arrangements.</span>
+  <a class="annbar__cta" href="about.html#joining">How to join &rarr;</a>
+  <button class="annbar__x" type="button" aria-label="Dismiss announcement" onclick="this.parentNode.classList.add('annbar--hide');try{sessionStorage.setItem('annbar_online5oct','1')}catch(e){}">&times;</button>
 </div>
-<script>try{if(sessionStorage.getItem('annbar_notif10sep')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
+<script>try{if(sessionStorage.getItem('annbar_online5oct')==='1'){document.getElementById('annbar').classList.add('annbar--hide');}}catch(e){}</script>
 
 <div id="site-header"></div>
 
