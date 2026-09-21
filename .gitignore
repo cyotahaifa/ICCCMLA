@@ -7,3 +7,10 @@ Thumbs.db
 desktop.ini
 *.tmp
 *~
+
+# Office lock files (created while a doc is open)
+~$*
+
+# Confidential: manuscripts, peer reviews, reviewer personal data
+# (this repo is the public website — never publish these)
+Reviewer Data/
