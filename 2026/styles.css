@@ -371,6 +371,16 @@ main:focus{outline:none}
 .prose p,.prose li{color:var(--ink-2);margin-bottom:12px}
 .prose ul{padding-left:22px;margin-bottom:12px}
 .prose a{color:var(--ieee);text-decoration:underline}
+/* buttons inside prose must keep their own colours - .prose a would
+   otherwise repaint them IEEE blue and underline them, which makes a
+   solid blue button read as blue-on-blue */
+.prose a.btn{text-decoration:none}
+.prose a.btn--solid{color:#fff}
+.prose a.btn--gold{color:var(--ink)}
+.prose a.btn--ghost{color:var(--ink)}
+/* notice lists inherit --ink-2 with no underline, so links in them are
+   otherwise indistinguishable from the surrounding text */
+.notice-list a{color:var(--ieee);text-decoration:underline}
 .prose .updated{font-family:var(--font-mono);font-size:.78rem;color:var(--ink-2);margin-bottom:30px}
 
 /* ============ RESPONSIVE ============ */
