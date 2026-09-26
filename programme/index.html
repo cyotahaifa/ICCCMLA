@@ -49,6 +49,10 @@
 .gcell.plain .st { font-weight: 500; font-size: 14px; color: var(--ink-2); }
 
 /* ---------------------------------------------- finder ----------------- */
+.herofind { margin: 28px 0 6px; max-width: 900px; }
+.herofind-cap { margin: 0 0 10px; font-size: 15px; color: var(--ink-2); }
+.herofind-cap .note { margin-left: 8px; font-size: 13.5px; color: var(--ink-3); }
+.herofind .finder { box-shadow: var(--sh-2); }
 .finder { display: grid; gap: 12px; }
 .finder .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .finder .row input { flex: 1 1 320px; }
@@ -247,8 +251,8 @@ body::after {
 <div class="bar">
   <span class="brand">ICCCMLA&nbsp;2026</span>
   <nav>
-    <a href="#glance">At a glance</a>
     <a href="#find">Find a paper</a>
+    <a href="#glance">At a glance</a>
     <a href="#zones">Time zones</a>
     <a href="#presenters">Presenters</a>
     <a href="#programme">Programme</a>
@@ -262,6 +266,19 @@ body::after {
     <p class="eyebrow"><span class="dot"></span><span id="hero-kicker">Conference programme</span></p>
     <h1 id="hero-title">Conference <b>Programme</b></h1>
     <p class="lede" id="hero-lede"></p>
+    <!-- The paper search sits in the masthead, above the fold: finding
+         one's own paper is what most visitors come here to do. -->
+    <div class="herofind" id="find">
+      <p class="herofind-cap"><b>Find your paper</b> <span class="note" id="q-note">Paper ID, title, presenter, institution or country</span></p>
+      <div class="panel panel-pad finder">
+        <div class="row">
+          <label class="sr" for="q">Search the programme</label>
+          <input type="search" id="q" placeholder="e.g. 435445, federated learning, Sumathi, Chandigarh, Turkey" autocomplete="off" spellcheck="false">
+          <button class="btn" type="button" id="qclear">Clear</button>
+        </div>
+        <div id="qres"></div>
+      </div>
+    </div>
     <div class="facts" id="hero-facts"></div>
   </header>
 
@@ -287,22 +304,6 @@ body::after {
         Session titles and the grouping of papers are provisional and may still change.
         Times, chairs and joining links are circulated before the conference.
       </span>
-    </div>
-  </section>
-
-  <!-- ============================================================ 2 -->
-  <section id="find">
-    <div class="sechead">
-      <h2>Find a paper</h2>
-      <span class="note" id="q-note">Paper ID, title, presenter, institution or country</span>
-    </div>
-    <div class="panel panel-pad finder">
-      <div class="row">
-        <label class="sr" for="q">Search the programme</label>
-        <input type="search" id="q" placeholder="e.g. 435445, federated learning, Sumathi, Chandigarh, Turkey" autocomplete="off" spellcheck="false">
-        <button class="btn" type="button" id="qclear">Clear</button>
-      </div>
-      <div id="qres"></div>
     </div>
   </section>
 
