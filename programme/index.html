@@ -405,8 +405,8 @@ body::after {
       <h2>The programme</h2>
       <span class="note" id="prog-note"></span>
     </div>
-    <!-- The same two tabs again, within reach of the listing itself: 56
-         session cards is a long way back to the top. -->
+    <!-- The same two tabs again, within reach of the listing itself: the
+         full run of session cards is a long way back to the top. -->
     <div class="daytabs sticky" id="daytabs2" role="group" aria-label="Show one day or both"></div>
     <div id="days"></div>
   </section>
@@ -608,7 +608,7 @@ body::after {
                  "Nine sessions run", "Ten sessions run", "Eleven sessions run", "Twelve sessions run"];
     var lead = words[D.rooms.length] || (D.rooms.length + " sessions run");
     document.getElementById("glance-lead").textContent =
-      lead + " in parallel in every slot, each in its own room on its own joining link. " +
+      lead + " in parallel at peak, each in its own room on its own joining link. " +
       "Select a session to jump to its paper list.";
 
     if (SESSIONS.some(function (x) { return x.s.provisional; })) {
