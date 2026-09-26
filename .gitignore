@@ -14,3 +14,7 @@ desktop.ini
 # Confidential: manuscripts, peer reviews, reviewer personal data
 # (this repo is the public website — never publish these)
 Reviewer Data/
+
+# Private working copy of the programme: attendee sheets, the full data with
+# names, chair e-mail data and the chair pages. Only programme/ is published.
+icccmla-2026-site/

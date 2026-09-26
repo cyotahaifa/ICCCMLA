@@ -8,7 +8,7 @@
 
   var SUBMIT_URL = "https://app.confconnects.com/conference/RFUUfnWqFz7xWUB91Bba";
   var EMAIL = "convenericccmla@gmail.com";
-  var CONF_DATE = "2026-10-05T09:00:00+02:00";
+  var CONF_DATE = "2026-10-05T10:00:00+05:30";
 
   var NAV = [
     { label: "Home", href: "index.html", page: "home" },
@@ -16,6 +16,7 @@
     { label: "Call for Papers", href: "call-for-papers.html", page: "cfp" },
     { label: "Committee", href: "committee.html", page: "committee" },
     { label: "Registration", href: "registration.html", page: "registration" },
+    { label: "Programme", href: "programme/", page: "programme" },
     { label: "Sponsors", href: "sponsors.html", page: "sponsors" },
     { label: "Contact", href: "contact.html", page: "contact" }
   ];
@@ -65,12 +66,12 @@
         brand() +
         '<nav class="nav__links" aria-label="Primary">' + links + "</nav>" +
         '<div class="nav__right">' +
-          '<a class="btn btn--solid js-schedule" href="about.html#dates">Schedule</a>' +
+          '<a class="btn btn--solid js-schedule" href="programme/">Schedule</a>' +
           '<button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>' +
         "</div>" +
       "</header>" +
       '<div class="mobile-menu" id="mobileMenu" aria-hidden="true">' + mlinks +
-        '<a class="btn btn--solid js-schedule" href="about.html#dates">Schedule</a></div>';
+        '<a class="btn btn--solid js-schedule" href="programme/">Schedule</a></div>';
   }
 
   function buildFooter() {
@@ -92,7 +93,7 @@
       "</div>" +
       '<div class="footer__cols">' +
         '<div><h4>Conference</h4><a href="about.html">About</a><a href="committee.html">Committee</a><a href="call-for-papers.html">Call for Papers</a><a href="registration.html">Proceedings</a></div>' +
-        '<div><h4>Participate</h4><a class="js-submit" href="' + SUBMIT_URL + '" target="_blank" rel="noopener">Submit Paper</a><a href="author-instructions.html">Author Instructions</a><a href="registration.html">Registration</a><a href="contact.html">Contact</a></div>' +
+        '<div><h4>Participate</h4><a class="js-submit" href="' + SUBMIT_URL + '" target="_blank" rel="noopener">Submit Paper</a><a href="author-instructions.html">Author Instructions</a><a href="programme/">Programme</a><a href="registration.html">Registration</a><a href="contact.html">Contact</a></div>' +
         '<div><h4>Conference</h4><a href="contact.html">Completely online</a><a href="about.html">Oct 5–6, 2026</a><a href="mailto:' + EMAIL + '">' + EMAIL + "</a></div>" +
       "</div>" +
     "</div>" +

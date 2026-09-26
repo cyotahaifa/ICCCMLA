@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Programme — ICCCMLA 2026</title>
+<meta name="description" content="Session schedule for ICCCMLA 2026, the IEEE 8th International Conference on Cybernetics, Cognition and Machine Learning Applications, 5–6 October 2026, online.">
+<meta name="theme-color" content="#f7f4ee">
+<link rel="stylesheet" href="assets/icccmla.css">
+<style>
+/* ---------------------------------------------- at a glance ------------ */
+/* Eleven parallel rooms will not fit a laptop at a readable width, so the
+   grid keeps a floor under each column and scrolls sideways instead of
+   crushing the session titles. Below 720px it collapses to one column and
+   the scroll never appears. */
+.glance { display: grid; gap: 10px; overflow-x: auto; padding-bottom: 4px; overscroll-behavior-x: contain; }
+.glance .grow { display: grid; grid-template-columns: 104px repeat(var(--rooms, 2), minmax(150px, 1fr)); gap: 10px; }
+.glance .ghead { font-size: 13.5px; font-weight: 700; color: var(--ink-2); padding: 6px 6px 0; }
+.glance .slot {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 12px 14px; border-radius: var(--r-s);
+  border: 1px dashed var(--line-2);
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-size: 13px; color: var(--ink-3);
+}
+.glance .slot b { color: var(--ink); font-size: 15px; font-weight: 700; }
+.gcell {
+  display: block; padding: 13px 15px; border-radius: var(--r-s);
+  background: var(--panel); border: 1px solid var(--line);
+  box-shadow: var(--sh-1); color: var(--ink);
+  transition: box-shadow .14s ease, transform .14s ease, border-color .14s ease;
+}
+.gcell:hover {
+  text-decoration: none; border-color: var(--cyan-dim);
+  box-shadow: var(--sh-2); transform: translateY(-1px);
+}
+.gcell .sn { font-size: 12.5px; font-weight: 650; color: var(--cyan); }
+.gcell .st { display: block; margin-top: 3px; font-weight: 650; font-size: 15px; line-height: 1.34; letter-spacing: -.008em; }
+.gcell .sm { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-3); }
+.gcell.wide {
+  grid-column: 2 / -1;
+  background: color-mix(in srgb, var(--amber) 9%, var(--panel));
+  border-color: color-mix(in srgb, var(--amber) 30%, transparent);
+}
+.gcell.wide .sn { color: var(--amber); }
+.gcell.plain { background: transparent; border-style: dashed; box-shadow: none; }
+.gcell.plain:hover { transform: none; box-shadow: none; }
+.gcell.plain .sn { color: var(--ink-3); }
+.gcell.plain .st { font-weight: 500; font-size: 14px; color: var(--ink-2); }
+
+/* ---------------------------------------------- finder ----------------- */
+.finder { display: grid; gap: 12px; }
+.finder .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.finder .row input { flex: 1 1 320px; }
+#qres { margin: 0; }
+#qres .none { color: var(--ink-3); font-size: 15px; margin: 6px 0 0; }
+#qres .hit { color: var(--ink-3); font-size: 14px; margin: 0 0 10px; }
+#qres mark { background: color-mix(in srgb, var(--amber) 26%, transparent); color: inherit; border-radius: 4px; padding: 0 3px; }
+
+/* ---------------------------------------------- zones ------------------ */
+#zones td.tm { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+#zones td.wh { min-width: 190px; }
+#zones .who { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-3); }
+#zones .zname { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-3); }
+/* The reader's own row, whether it was already in the table or added for them. */
+#zones tr.you td { background: color-mix(in srgb, var(--cyan) 9%, transparent); }
+#zones tr.you td:first-child b::after {
+  content: "you"; margin-left: 9px; padding: 1px 9px; border-radius: 999px;
+  font-size: 12px; font-weight: 650; color: #fff; background: var(--cyan);
+  vertical-align: 1px;
+}
+#zones tr.ref td { color: var(--ink-3); }
+#zones .rollover { color: var(--amber); font-weight: 650; }
+.zonenote { margin: 14px 0 0; font-size: 14.5px; color: var(--ink-3); }
+
+/* ---------------------------------------------- day + session ---------- */
+.dayhead {
+  display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  margin: 56px 0 8px; padding: 18px 22px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--r); box-shadow: var(--sh-2);
+}
+.dayhead .tag {
+  padding: 3px 12px; border-radius: 999px;
+  background: color-mix(in srgb, var(--cyan) 12%, transparent);
+  color: var(--cyan); font-size: 13.5px; font-weight: 650;
+}
+.dayhead h3 { font-size: 24px; }
+.dayhead .cnt { margin-left: auto; font-size: 14.5px; color: var(--ink-3); }
+
+.slotlead {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin: 36px 0 14px; font-size: 15px; font-weight: 650; color: var(--ink-2);
+}
+.slotlead::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+.interval {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin: 20px 0; padding: 12px 18px;
+  border: 1px dashed var(--line-2); border-radius: 999px;
+  font-size: 14.5px; color: var(--ink-3);
+}
+.interval b { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); font-weight: 650; }
+
+.pair { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(430px, 1fr)); align-items: start; }
+
+.ses {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--r); overflow: hidden; box-shadow: var(--sh-2);
+}
+.ses.live { border-color: var(--cyan); box-shadow: 0 0 0 3px color-mix(in srgb, var(--cyan) 18%, transparent), var(--sh-2); }
+.ses > header { padding: 20px 22px 18px; border-bottom: 1px solid var(--line); }
+.ses .crumb { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13.5px; color: var(--ink-3); }
+.ses .crumb .no { color: var(--cyan); font-weight: 700; }
+.ses .crumb .rm { color: var(--ink-2); }
+.ses h4 { margin: 8px 0 0; font-size: 19.5px; line-height: 1.28; }
+.ses .when { margin: 9px 0 0; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 14.5px; color: var(--ink); font-weight: 650; }
+.ses .when span { color: var(--ink-3); font-weight: 400; }
+
+.ses .meta { display: grid; gap: 8px; margin: 16px 0 0; font-size: 14.5px; }
+.ses .meta div { display: flex; gap: 12px; align-items: baseline; }
+.ses .meta .k { flex: none; width: 74px; font-size: 13.5px; color: var(--ink-3); }
+.ses .meta .v { color: var(--ink-2); }
+
+.ses .acts { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 18px; }
+.ses .acts .btn { padding: 7px 15px; font-size: 13.5px; }
+
+table.papers { font-size: 14.5px; }
+table.papers th.c-n  { width: 34px; }
+table.papers th.c-t  { width: 66px; }
+table.papers th.c-id { width: 90px; }
+table.papers td.n  { color: var(--ink-3); font-size: 13.5px; }
+table.papers td.tm { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); white-space: nowrap; }
+table.papers td.pid { font-family: var(--mono); font-weight: 700; color: var(--cyan); white-space: nowrap; }
+table.papers td.ti .t { display: block; font-weight: 620; color: var(--ink); line-height: 1.38; }
+table.papers td.ti .t.tba { color: var(--ink-3); font-weight: 400; font-style: italic; }
+table.papers td.ti .who { display: block; margin-top: 5px; font-size: 13.5px; color: var(--ink-2); }
+table.papers td.ti .who b { font-weight: 650; color: var(--ink); }
+table.papers td.ti .aff { color: var(--ink-3); }
+table.papers tr.flash td { animation: flash 2.4s ease-out; }
+@keyframes flash { from { background: color-mix(in srgb, var(--amber) 26%, transparent); } to { background: transparent; } }
+
+/* ---------------------------------------------- resource links -------- */
+.reslinks { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 22px; }
+.reslinks:empty { display: none; }
+.reslinks a {
+  display: inline-flex; align-items: baseline; gap: 9px;
+  padding: 11px 17px; border-radius: var(--r-s);
+  background: var(--panel); border: 1px solid var(--line);
+  box-shadow: var(--sh-1); color: var(--ink);
+  transition: box-shadow .14s ease, transform .14s ease, border-color .14s ease;
+}
+.reslinks a:hover {
+  text-decoration: none; border-color: var(--cyan-dim);
+  box-shadow: var(--sh-2); transform: translateY(-1px);
+}
+.reslinks a b { font-weight: 650; font-size: 15px; }
+.reslinks a span { font-size: 13px; color: var(--ink-3); }
+.reslinks a::after { content: "\2197"; color: var(--cyan); font-size: 13px; }
+
+/* ---------------------------------------------- hard rules ------------ */
+/* Conference policy that costs someone their certificate if they miss it.
+   Given its own card, above the advice, rather than buried in a bullet. */
+.rule {
+  margin: 0 0 22px; padding: 22px 26px;
+  background: var(--panel);
+  border: 1px solid color-mix(in srgb, var(--red) 34%, transparent);
+  border-left: 5px solid var(--red);
+  border-radius: var(--r); box-shadow: var(--sh-2);
+}
+.rule h3 { font-size: 18.5px; color: var(--red); margin-bottom: 10px; }
+.rule p { margin: 0 0 11px; color: var(--ink-2); font-size: 15.5px; }
+.rule p:last-child { margin-bottom: 0; }
+.rule b { color: var(--ink); }
+.rule .hard {
+  padding: 11px 15px; border-radius: var(--r-s);
+  background: color-mix(in srgb, var(--red) 9%, transparent);
+  color: var(--ink);
+}
+.rule .hard b { color: var(--red); }
+
+/* [hidden] loses to a display rule, so say it explicitly. */
+.banner[hidden] { display: none; }
+.banner {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 20px; margin: 26px 0 0;
+  border: 1px solid color-mix(in srgb, var(--amber) 34%, transparent);
+  background: color-mix(in srgb, var(--amber) 9%, transparent);
+  border-radius: var(--r-s); font-size: 15px; color: var(--ink-2);
+}
+.banner b { color: var(--amber); flex: none; }
+
+ol.guide { margin: 0; padding-left: 24px; }
+ol.guide > li { margin-bottom: 20px; }
+ol.guide > li::marker { color: var(--cyan); font-weight: 700; }
+ol.guide > li > b { display: block; margin-bottom: 5px; color: var(--ink); font-size: 16.5px; }
+ol.guide ul { margin: 8px 0 0; padding-left: 20px; color: var(--ink-2); font-size: 15px; }
+ol.guide li li { margin-bottom: 6px; }
+ol.guide li li::marker { color: var(--ink-3); }
+
+.keyfact { display: flex; gap: 12px; flex-wrap: wrap; margin: 0 0 22px; }
+.keyfact div {
+  display: flex; flex-direction: column; gap: 1px;
+  padding: 12px 18px; min-width: 126px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--r-s); box-shadow: var(--sh-1);
+}
+.keyfact .k { font-size: 13px; color: var(--ink-3); }
+.keyfact .v { font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -.012em; }
+
+@media (max-width: 720px) {
+  .glance .grow { grid-template-columns: 1fr; }
+  .glance .ghead { display: none; }
+  .pair { grid-template-columns: 1fr; }
+  .ses .meta .k { width: 66px; }
+  .dayhead .cnt { margin-left: 0; width: 100%; }
+}
+
+/* ---------------------------------------------- author copy ------------ */
+/* This is the copy published for authors. It is not meant to be copied out
+   or printed: the full, printable programme is kept for the chairs. Nothing in a browser can stop a screenshot, so
+   this is a deterrent, and the watermark marks any capture as this page. */
+body {
+  -webkit-user-select: none; -moz-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+}
+input, textarea { -webkit-user-select: text; -moz-user-select: text; user-select: text; }
+img, svg { -webkit-user-drag: none; }
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 50; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='220'%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' transform='rotate(-24 180 110)' font-family='sans-serif' font-size='17' font-weight='700' fill='%23888' fill-opacity='.10'%3EICCCMLA 2026 %C2%B7 Author copy%3C/text%3E%3C/svg%3E");
+}
+
+@media print {
+  html, body { background: #fff !important; }
+  body > * { display: none !important; }
+  body::before, body::after { display: none !important; }
+  html::after {
+    content: "Printing of the ICCCMLA 2026 programme is disabled. Please view it online.";
+    display: block; padding: 40px; font: 16pt sans-serif; color: #000;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <span class="brand">ICCCMLA&nbsp;2026</span>
+  <nav>
+    <a href="#glance">At a glance</a>
+    <a href="#find">Find a paper</a>
+    <a href="#zones">Time zones</a>
+    <a href="#presenters">Presenters</a>
+    <a href="#programme">Programme</a>
+  </nav>
+  <button class="iconbtn" id="theme" type="button" aria-label="Switch between dark and light">◐ Theme</button>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow"><span class="dot"></span><span id="hero-kicker">Conference programme</span></p>
+    <h1 id="hero-title">Conference <b>Programme</b></h1>
+    <p class="lede" id="hero-lede"></p>
+    <div class="facts" id="hero-facts"></div>
+  </header>
+
+  <!-- ============================================================ 1 -->
+  <section id="glance">
+    <div class="sechead">
+      <h2>Programme at a glance</h2>
+      <span class="note" id="glance-note"></span>
+    </div>
+    <p class="lead" id="glance-lead">
+      Select a session to jump to its paper list.
+    </p>
+    <!-- Day tabs and the track legend are built from the data by the script
+         at the foot of the page; both are inert if it does not run. -->
+    <div class="viewbar">
+      <div class="daytabs" id="daytabs" role="group" aria-label="Show one day or both"></div>
+      <div class="legend" id="track-legend"></div>
+    </div>
+    <div class="glance" id="glance-grid"></div>
+    <div class="banner" id="provisional-banner" hidden>
+      <b>Provisional</b>
+      <span>
+        Session titles and the grouping of papers are provisional and may still change.
+        Times, chairs and joining links are circulated before the conference.
+      </span>
+    </div>
+  </section>
+
+  <!-- ============================================================ 2 -->
+  <section id="find">
+    <div class="sechead">
+      <h2>Find a paper</h2>
+      <span class="note" id="q-note">Paper ID, title, presenter, institution or country</span>
+    </div>
+    <div class="panel panel-pad finder">
+      <div class="row">
+        <label class="sr" for="q">Search the programme</label>
+        <input type="search" id="q" placeholder="e.g. 435445, federated learning, Sumathi, Chandigarh, Turkey" autocomplete="off" spellcheck="false">
+        <button class="btn" type="button" id="qclear">Clear</button>
+      </div>
+      <div id="qres"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ 3 -->
+  <section id="zones">
+    <div class="sechead">
+      <h2>Time zones</h2>
+      <span class="note" id="zones-note"></span>
+    </div>
+    <p class="lead" id="zones-lead"></p>
+    <div class="tw">
+      <table id="zones-table">
+        <thead><tr id="zones-head"></tr></thead>
+        <tbody id="zones-body"></tbody>
+      </table>
+    </div>
+    <p class="zonenote" id="zones-foot"></p>
+  </section>
+
+  <!-- ============================================================ 4 -->
+  <section id="presenters">
+    <div class="sechead">
+      <h2>For presenters</h2>
+    </div>
+    <div class="keyfact" id="keyfact"></div>
+    <div class="reslinks" id="reslinks"></div>
+
+    <div class="rule" id="rule-presenters">
+      <h3>Present in your own session, and nowhere else</h3>
+      <p>
+        You are scheduled into <b>one</b> session. You may not move to another session,
+        or present in another session, <b>without prior written approval</b> from the
+        Conference Chair.
+      </p>
+      <p class="hard">
+        A presentation given in any session other than your own <b>will not be counted</b>.
+        It earns no certificate and the paper is reported to the committee as absent —
+        even though you presented.
+      </p>
+      <p>
+        <b>If anything goes wrong, e-mail us — do not improvise.</b>
+        If your joining link fails, you cannot be admitted, you are unwell, your slot
+        clashes with something you cannot move, or anything else prevents you presenting
+        at your published time, write to
+        <a id="rule-mail-1" href="#">the conference secretariat</a> <b>before</b> your
+        session, quoting your Paper ID. A change will be arranged and confirmed to you in
+        writing. Turning up in a different room is not a substitute for asking.
+      </p>
+    </div>
+
+    <div class="panel panel-pad">
+      <ol class="guide">
+        <li><b>Be in the room ten minutes early.</b>
+          <ul>
+            <li>Join on your session's link, not the inaugural link. The links are listed against each session below.</li>
+            <li>Rename yourself to <span class="mono">PaperID — Your Name</span> so the chair can admit you quickly.</li>
+            <li>Test your microphone, camera and screen share before your slot, not during it.</li>
+            <li>If the link will not let you in, e-mail the secretariat straight away rather than
+                joining a different session.</li>
+          </ul>
+        </li>
+        <li><b>Your slot is fixed.</b>
+          <ul>
+            <li>The chair will stop the presentation at the limit so that every later paper keeps its published time.</li>
+            <li>Ten to twelve slides is the right length. Do not read the paper aloud.</li>
+          </ul>
+        </li>
+        <li><b>Prepare the file properly.</b>
+          <ul>
+            <li>PowerPoint or PDF, 16:9, with the Paper ID and title on the opening slide.</li>
+            <li>Embed any video and any unusual font; do not rely on a live web page.</li>
+            <li>Keep a copy open locally in case the share fails.</li>
+          </ul>
+        </li>
+        <li><b>Present live, in English.</b>
+          <ul>
+            <li>An author of the paper must present it. A pre-recorded file is not a presentation.</li>
+            <li>If the listed presenter changes, tell the chair at the start of the session — the chair records the substitution on the evaluation sheet.</li>
+          </ul>
+        </li>
+        <li><b>Attendance is what earns the certificate.</b>
+          <ul>
+            <li>The chair marks every paper present, late or absent. An absent paper is reported to the committee.</li>
+            <li>Registration and the completed IEEE eCopyright form must both be in place before the paper goes forward to IEEE <i>Xplore</i>.</li>
+          </ul>
+        </li>
+        <li><b>Sessions may be recorded.</b>
+          <ul>
+            <li>Recording is for the committee's records. Tell the chair at the start if you object.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================ 6 -->
+  <section id="programme">
+    <div class="sechead">
+      <h2>The programme</h2>
+      <span class="note" id="prog-note"></span>
+    </div>
+    <!-- The same two tabs again, within reach of the listing itself: 56
+         session cards is a long way back to the top. -->
+    <div class="daytabs sticky" id="daytabs2" role="group" aria-label="Show one day or both"></div>
+    <div id="days"></div>
+  </section>
+
+  <footer>
+    <span id="foot-version"></span>
+    <span class="sp"></span>
+    <a id="foot-site" href="https://www.intdatacon.com">Conference site</a>
+  </footer>
+
+</div>
+
+<script src="assets/programme-data-authors.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var D = window.ICCCMLA;
+  if (!D) { document.getElementById("days").textContent = "Programme data failed to load."; return; }
+  var M = D.meta, TZ = M.tz;
+  var SLOT = M.talk + M.qa;
+
+  /* Names show only if the data this page was given carries them. The author
+     copy loads programme-data-authors.js, which has none, so there is
+     nothing here a reader could switch back on; see the data <script> tag. */
+  var SHOW_AUTHORS = anyPaperHas("presenter");
+  var TITLE_HEAD = SHOW_AUTHORS ? "Paper title · Name of presenter" : "Paper title";
+
+  /* ------------------------------------------------------------ utils -- */
+  function anyPaperHas(k) {
+    return D.days.some(function (d) {
+      return d.blocks.some(function (b) {
+        return b.type === "sessions" && b.sessions.some(function (s) {
+          return s.papers.some(function (p) { return p[k]; });
+        });
+      });
+    });
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function mins(hhmm) { return (+hhmm.slice(0, 2)) * 60 + (+hhmm.slice(3, 5)); }
+  function hhmm(m) {
+    m = ((m % 1440) + 1440) % 1440;
+    return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
+  }
+  /* Shift a time from the conference zone into a zone `off` minutes from UTC.
+     Returns the clock time plus a day marker where it rolls over. */
+  function shift(hm, off) {
+    var t = mins(hm) - TZ.minutes + off;
+    var day = t < 0 ? -1 : (t >= 1440 ? 1 : 0);
+    return { t: hhmm(t), day: day };
+  }
+  function shiftText(hm, off) {
+    var r = shift(hm, off);
+    return r.t + (r.day === 0 ? "" : (r.day < 0 ? " (prev.)" : " (next)"));
+  }
+  function allSessions() {
+    var out = [];
+    D.days.forEach(function (d) {
+      d.blocks.forEach(function (b) {
+        if (b.type === "sessions") b.sessions.forEach(function (s) { out.push({ s: s, d: d, b: b }); });
+      });
+    });
+    return out;
+  }
+  var SESSIONS = allSessions();
+  var PAPERS = [];
+  SESSIONS.forEach(function (x) {
+    x.s.papers.forEach(function (p, i) {
+      PAPERS.push({ p: p, s: x.s, d: x.d, i: i, at: hhmm(mins(x.s.start) + i * SLOT) });
+    });
+  });
+
+  /* ------------------------------------------------------------- hero -- */
+  var countries = {}, insts = {};
+  PAPERS.forEach(function (r) {
+    if (r.p.country) countries[r.p.country] = 1;
+    if (r.p.affiliation) insts[r.p.affiliation] = 1;
+  });
+  var nCountries = Object.keys(countries).length;
+
+  document.getElementById("hero-kicker").textContent =
+    M.acronym + " · " + M.mode + " · " + M.dates;
+  /* Deliberately says "days", not "afternoons": the conference clock can be
+     re-based (it moved from IST to CEST in September 2026) and a headline
+     that names a time of day goes quietly wrong when it does. */
+  document.getElementById("hero-title").innerHTML =
+    "Two days, <b>" + PAPERS.length + " papers</b>.";
+  document.getElementById("hero-lede").innerHTML =
+    "Welcome to " + esc(M.name) + ". " +
+    "Presenters are joining from " + nCountries + " countries, so every time below is " +
+    esc(TZ.name) + " — there is a conversion table further down, with your own zone picked out. " +
+    esc(M.cosponsor) + ".";
+
+  var facts = [
+    ["Dates", M.dates],
+    ["Format", M.mode],
+    ["Papers", String(PAPERS.length)],
+    ["Sessions", String(SESSIONS.length)],
+    ["Rooms", String(D.rooms.length) + " in parallel"],
+    ["Countries", String(nCountries)],
+    ["Each paper", M.talk + " + " + M.qa + " min"]
+  ];
+  document.getElementById("hero-facts").innerHTML = facts.map(function (f) {
+    return '<div class="fact"><span class="k">' + esc(f[0]) + '</span><span class="v">' + esc(f[1]) + "</span></div>";
+  }).join("");
+
+  document.getElementById("foot-version").textContent = M.version;
+  document.getElementById("foot-site").href = M.site;
+
+  /* Author resources. Anything blank in META.links is skipped rather than
+     rendered as a dead link, so the presentation template appears here on
+     its own the day a URL is put in the builder. */
+  (function () {
+    var L = M.links || {};
+    var items = [
+      [L.slideTemplate,      "Presentation template", "Slide deck to build your talk on"],
+      [L.paperTemplate,      "IEEE paper template",   "For the camera-ready manuscript"],
+      [L.pdfExpress,         "IEEE PDF eXpress",      "Check the PDF before you submit it"],
+      [L.authorInstructions, "Author instructions",   "The full set, on the conference site"]
+    ].filter(function (x) { return x[0]; });
+
+    document.getElementById("reslinks").innerHTML = items.map(function (x) {
+      return '<a href="' + esc(x[0]) + '" target="_blank" rel="noopener noreferrer">' +
+        "<b>" + esc(x[1]) + "</b><span>" + esc(x[2]) + "</span></a>";
+    }).join("");
+  }());
+
+  /* The "e-mail us" rules are useless without an address, so they show the
+     address itself and fall back to plain words if META.contact is empty. */
+  (function () {
+    ["rule-mail-1", "rule-mail-2"].forEach(function (id) {
+      var a = document.getElementById(id);
+      if (!a) return;
+      if (M.contact) {
+        a.href = "mailto:" + M.contact;
+        a.textContent = M.contact;
+      } else {
+        a.replaceWith(document.createTextNode("the conference secretariat"));
+      }
+    });
+  }());
+  document.getElementById("prog-note").textContent = "All times " + TZ.label;
+
+  /* -------------------------------------------------------- at a glance -- */
+  (function () {
+    var out = [];
+    D.days.forEach(function (d, di) {
+      /* data-day on every row is what the day tabs filter on. */
+      var dd = ' data-day="' + (di + 1) + '"';
+      out.push('<div class="grow"' + dd + '><div class="ghead">' + esc(d.tag) + " · " + esc(d.date) + "</div>" +
+        D.rooms.map(function (r) { return '<div class="ghead">Room ' + esc(r) + "</div>"; }).join("") + "</div>");
+      d.blocks.forEach(function (b) {
+        if (b.type === "break") {
+          /* "Interval / Interval" tells nobody anything; the length does. */
+          var lenMin = mins(b.end) - mins(b.start);
+          var label = b.label === "Interval"
+            ? "Rooms stay open — stretch your legs"
+            : b.label;
+          out.push('<div class="grow"' + dd + '><div class="slot"><b>' + esc(b.start) + "</b>" + esc(b.end || "") + "</div>" +
+            '<a class="gcell plain wide" href="#programme"><span class="sn">Interval &middot; ' + lenMin + ' minutes</span>' +
+            '<span class="st">' + label + "</span></a></div>");
+          return;
+        }
+        if (b.type === "ceremony") {
+          out.push('<div class="grow"' + dd + '><div class="slot"><b>' + esc(b.start) + "</b>" + esc(b.end) + "</div>" +
+            '<a class="gcell wide" href="#programme"><span class="sn">Plenary</span>' +
+            '<span class="st">' + esc(b.title) + "</span></a></div>");
+          return;
+        }
+        var cells = D.rooms.map(function (room) {
+          var s = b.sessions.filter(function (x) { return x.room === room; })[0];
+          if (!s) return '<div class="slot" style="opacity:.35"></div>';
+          /* The track is carried as a data attribute and painted as an edge
+             by the stylesheet; the name goes in the tooltip, and the legend
+             above the grid does the naming in the open. */
+          return '<a class="gcell" href="#' + esc(s.anchor) + '" data-trk="' + (s.trk || 0) + '"' +
+            (s.track ? ' title="' + esc(s.track) + '"' : "") + ">" +
+            '<span class="sn">Session ' + String(s.num).padStart(2, "0") + " · Room " + esc(s.room) + "</span>" +
+            '<span class="st">' + esc(s.title) + "</span>" +
+            '<span class="sm">' + esc(s.start) + "–" + esc(s.end) + " · " + s.papers.length + " papers</span></a>";
+        }).join("");
+        out.push('<div class="grow"' + dd + '><div class="slot"><b>' + esc(b.start) + "</b>" + esc(b.end) + "</div>" + cells + "</div>");
+      });
+    });
+    var grid = document.getElementById("glance-grid");
+    grid.style.setProperty("--rooms", D.rooms.length);
+    /* Nine rooms or more and the printed grid needs smaller type; see the
+       .glance.wide rules in the print stylesheet. */
+    if (D.rooms.length > 8) grid.classList.add("wide");
+    grid.innerHTML = out.join("");
+    document.getElementById("glance-note").textContent = D.rooms.length + " parallel rooms · all times " + TZ.label;
+
+    var words = ["", "One session runs", "Two sessions run", "Three sessions run", "Four sessions run",
+                 "Five sessions run", "Six sessions run", "Seven sessions run", "Eight sessions run",
+                 "Nine sessions run", "Ten sessions run", "Eleven sessions run", "Twelve sessions run"];
+    var lead = words[D.rooms.length] || (D.rooms.length + " sessions run");
+    document.getElementById("glance-lead").textContent =
+      lead + " in parallel in every slot, each in its own room on its own joining link. " +
+      "Select a session to jump to its paper list.";
+
+    if (SESSIONS.some(function (x) { return x.s.provisional; })) {
+      document.getElementById("provisional-banner").hidden = false;
+    }
+  }());
+
+  /* ------------------------------------------------------------ zones --- */
+  /* The rows come from the countries the presenters actually registered
+     from, so this table is never a guess. If the reader is somewhere else
+     again, a row is worked out for them from their browser and dropped into
+     the right place, rather than telling them they are not in the table. */
+  (function () {
+    function offText(m) {
+      var s = m < 0 ? "−" : "+";                 /* a real minus sign */
+      return "UTC" + s + String(Math.floor(Math.abs(m) / 60)).padStart(2, "0") +
+             ":" + String(Math.abs(m) % 60).padStart(2, "0");
+    }
+
+    /* Every column is the same instant in a different place, so each header
+       carries the conference time it converts — otherwise two "sessions
+       begin" columns on the same day are impossible to tell apart. */
+    var marks = [];
+    D.days.forEach(function (d) {
+      d.blocks.forEach(function (b) {
+        if (b.type === "ceremony") marks.push({ top: d.weekday, sub: b.title.replace(/ Session$/, ""), t: b.start });
+        if (b.type === "sessions") marks.push({ top: d.weekday, sub: "Sessions", t: b.start });
+      });
+    });
+    marks = marks.slice(0, 5);
+
+    document.getElementById("zones-head").innerHTML =
+      "<th>Where the presenters are</th><th>Local zone</th>" +
+      marks.map(function (m) {
+        return "<th>" + esc(m.top) + " &middot; " + esc(m.sub) +
+          "<span class='zname'>" + esc(m.t) + " " + esc(TZ.label) + "</span></th>";
+      }).join("");
+
+    var local = null;
+    try { local = -new Date(2026, 9, 5, 12, 0, 0).getTimezoneOffset(); } catch (e) { local = null; }
+
+    var rows = D.zones.slice();
+    var haveLocal = local !== null && rows.some(function (z) { return z.minutes === local; });
+
+    /* Not one of the presenter countries — give them their own line anyway. */
+    if (local !== null && !haveLocal) {
+      var guess = "";
+      try { guess = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) { guess = ""; }
+      rows.push({
+        place: guess ? guess.replace(/_/g, " ") : "Where you are",
+        label: offText(local), name: "", minutes: local, count: 0, note: "Added from your browser"
+      });
+    }
+
+    /* East to west, so the table reads like a map. */
+    rows.sort(function (a, b) { return b.minutes - a.minutes; });
+
+    /* Several countries can share an offset — India and Sri Lanka are both
+       +05:30 — so exactly one row gets the badge: the one with the most
+       presenters behind it. Badging both just makes the reader hesitate. */
+    var youAt = -1;
+    if (local !== null) {
+      rows.forEach(function (z, i) {
+        if (z.minutes !== local) return;
+        if (youAt < 0 || z.count > rows[youAt].count) youAt = i;
+      });
+    }
+
+    document.getElementById("zones-body").innerHTML = rows.map(function (z, i) {
+      var you = (i === youAt);
+      var who = z.count > 0
+        ? (z.count + (z.count === 1 ? " presenter" : " presenters"))
+        : (z.note || "");
+      return '<tr class="' + (you ? "you" : (z.count ? "" : "ref")) + '">' +
+        '<td class="wh"><b>' + esc(z.place) + "</b>" +
+        (who ? '<span class="who">' + esc(who) + "</span>" : "") + "</td>" +
+        '<td class="tm">' + esc(z.label) +
+          '<span class="zname">' + esc(offText(z.minutes)) + "</span></td>" +
+        marks.map(function (m) {
+          var r = shift(m.t, z.minutes);
+          return '<td class="tm">' + esc(r.t) +
+            (r.day === 0 ? "" : '<span class="rollover"> ' + (r.day < 0 ? "prev. day" : "next day") + "</span>") +
+            "</td>";
+        }).join("") + "</tr>";
+    }).join("");
+
+    /* The lede and the closing note, both written from the data. */
+    var withPeople = D.zones.filter(function (z) { return z.count > 0; });
+    var nPeople = withPeople.reduce(function (a, z) { return a + z.count; }, 0);
+    var offsets = {};
+    withPeople.forEach(function (z) { offsets[z.minutes] = 1; });
+    var spread = Object.keys(offsets).length;
+
+    document.getElementById("zones-lead").innerHTML =
+      "Every time in this programme is <b>" + esc(TZ.name) + " (" + esc(TZ.offset) + ")</b>. " +
+      "The " + nPeople + " presenters are spread across <b>" + withPeople.length + " countries</b> and " +
+      spread + " different clocks, so here is the whole day in each of them. " +
+      "Your own row is picked out" +
+      (haveLocal ? "." : ", and if you are somewhere else again it is worked out for you.");
+
+    var foots = [];
+    withPeople.forEach(function (z) { if (z.note) foots.push(z.place + ": " + z.note + "."); });
+    if (local !== null && !haveLocal) {
+      foots.push("Your device reads " + offText(local) + ", which is not one of the presenter countries, so its row was added for you.");
+    }
+    document.getElementById("zones-foot").textContent = foots.join(" ");
+
+    document.getElementById("zones-note").textContent =
+      "Conference clock: " + TZ.label;
+  }());
+
+  /* ---------------------------------------------------------- keyfact --- */
+  document.getElementById("keyfact").innerHTML = [
+    ["Presentation", M.talk + " minutes"],
+    ["Questions", M.qa + " minutes"],
+    ["Total per paper", SLOT + " minutes"],
+    ["Slides", "16:9, 10–12"],
+    ["Language", "English"],
+    ["Delivery", "Live, by an author"]
+  ].map(function (f) {
+    return '<div><span class="k">' + esc(f[0]) + '</span><span class="v">' + esc(f[1]) + "</span></div>";
+  }).join("");
+
+  /* ------------------------------------------------------------ ICS ----- */
+  var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function icsTime(iso, hm) {
+    /* Conference times are TZ.minutes from UTC; emit UTC so any calendar agrees. */
+    var p = iso.split("-");
+    var dt = Date.UTC(+p[0], +p[1] - 1, +p[2], 0, 0, 0) + (mins(hm) - TZ.minutes) * 60000;
+    var d = new Date(dt);
+    function z(n) { return String(n).padStart(2, "0"); }
+    return d.getUTCFullYear() + z(d.getUTCMonth() + 1) + z(d.getUTCDate()) + "T" +
+           z(d.getUTCHours()) + z(d.getUTCMinutes()) + "00Z";
+  }
+  function icsEsc(s) { return String(s || "").replace(/([,;\\])/g, "\\$1").replace(/\n/g, "\\n"); }
+  function fold(line) {
+    var out = [];
+    while (line.length > 72) { out.push(line.slice(0, 72)); line = " " + line.slice(72); }
+    out.push(line);
+    return out.join("\r\n");
+  }
+  function vevent(uid, start, end, summary, desc, loc) {
+    return ["BEGIN:VEVENT", "UID:" + uid + "@intdatacon.com",
+      "DTSTAMP:" + icsTime(D.days[0].iso, "00:00"),
+      "DTSTART:" + start, "DTEND:" + end,
+      fold("SUMMARY:" + icsEsc(summary)),
+      fold("DESCRIPTION:" + icsEsc(desc)),
+      fold("LOCATION:" + icsEsc(loc || M.mode)),
+      "END:VEVENT"].join("\r\n");
+  }
+  function icsSave(name, body) {
+    var doc = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//ICCCMLA 2026//Programme//EN",
+      "CALSCALE:GREGORIAN", "METHOD:PUBLISH", body, "END:VCALENDAR"].join("\r\n");
+    var blob = new Blob([doc], { type: "text/calendar;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  }
+  function sessionEvent(x) {
+    var s = x.s, iso = x.d.iso;
+    /* The author copy is not to be copied out, so the calendar entry names
+       the session and points back here rather than carrying the paper list. */
+    var desc = s.papers.length + " papers. Paper list: " +
+      location.href.split("#")[0] + "#" + s.anchor;
+    if (s.chair) desc = "Chair: " + s.chair + "\n\n" + desc;
+    if (s.link) desc += "\n\nJoin: " + s.link;
+    return vevent("s" + s.num, icsTime(iso, s.start), icsTime(iso, s.end),
+      M.acronym + " · Session " + s.num + " · " + s.title,
+      desc, "Room " + s.room + " (online)");
+  }
+
+  /* ------------------------------------------------------- render days -- */
+  function paperRows(s) {
+    return s.papers.map(function (p, i) {
+      var at = hhmm(mins(s.start) + i * SLOT);
+      var who = '<span class="who"><b>' + esc(p.presenter || "Presenter to be confirmed") + "</b>" +
+        (p.affiliation ? ' <span class="aff">· ' + esc(p.affiliation) + "</span>" : "") +
+        (p.country ? ' <span class="aff">· ' + esc(p.country) + "</span>" : "") +
+        (p.student ? ' <span class="chip student">Student</span>' : "") + "</span>";
+      if (!SHOW_AUTHORS) who = "";
+      var title = p.title
+        ? '<span class="t">' + esc(p.title) + "</span>"
+        : '<span class="t tba">Title to be published</span>';
+      return '<tr id="p' + esc(p.id) + '"><td class="n">' + (i + 1) + "</td>" +
+        '<td class="tm">' + esc(at) + "</td>" +
+        '<td class="pid">' + esc(p.id) + "</td>" +
+        '<td class="ti">' + title + who + "</td></tr>";
+    }).join("");
+  }
+
+  function sessionCard(x) {
+    var s = x.s;
+    var chair = s.chair ? esc(s.chair) : '<span class="blank"></span>';
+    var cochair = s.cochair ? esc(s.cochair) : '<span class="blank"></span>';
+    var link = s.link
+      ? '<a href="' + esc(s.link) + '" rel="noopener">' + esc(s.link) + "</a>"
+      : '<span class="blank"></span> <span class="muted">circulated before the conference</span>';
+    return '<article class="ses" id="' + esc(s.anchor) + '" data-ses="' + s.num + '"' +
+      ' data-trk="' + (s.trk || 0) + '">' +
+      "<header>" +
+        '<div class="crumb"><span class="no">Session ' + String(s.num).padStart(2, "0") + "</span>" +
+          '<span class="rm">Room ' + esc(s.room) + "</span>" +
+          '<span class="rm">Slot ' + s.slot + "</span>" +
+          /* The track is always named, never left to the colour alone. */
+          (s.track ? '<span class="trk" data-trk="' + (s.trk || 0) + '">' + esc(s.track) + "</span>" : "") +
+          (s.provisional ? '<span class="chip warn">Provisional</span>' : "") +
+        "</div>" +
+        "<h4>" + esc(s.title) + "</h4>" +
+        '<p class="when">' + esc(x.d.weekday) + " " + esc(x.d.date) + " · " +
+          esc(s.start) + "–" + esc(s.end) + " " + esc(TZ.label) +
+          ' <span>· ' + s.papers.length + " papers</span></p>" +
+        '<div class="meta">' +
+          '<div><span class="k">Chair 1</span><span class="v">' + chair + "</span></div>" +
+          '<div><span class="k">Chair 2</span><span class="v">' + cochair + "</span></div>" +
+          '<div><span class="k">Join</span><span class="v">' + link + "</span></div>" +
+        "</div>" +
+        '<div class="acts">' +
+          '<button class="btn" type="button" data-cal="' + s.num + '">＋ Add to calendar</button>' +
+        "</div>" +
+      "</header>" +
+      '<div class="tw"><table class="papers">' +
+        '<thead><tr><th class="c-n">#</th><th class="c-t">Time</th><th class="c-id">Paper ID</th>' +
+        "<th>" + TITLE_HEAD + "</th></tr></thead>" +
+        "<tbody>" + paperRows(s) + "</tbody></table></div></article>";
+  }
+
+  (function renderDays() {
+    var out = [];
+    D.days.forEach(function (d, di) {
+      var n = 0;
+      d.blocks.forEach(function (b) { if (b.type === "sessions") b.sessions.forEach(function (s) { n += s.papers.length; }); });
+      /* data-day on every block is what the day tabs filter on. */
+      var dd = ' data-day="' + (di + 1) + '"';
+      out.push('<div class="dayhead"' + dd + '><span class="tag">' + esc(d.tag) + "</span>" +
+        "<h3>" + esc(d.weekday) + " " + esc(d.date) + "</h3>" +
+        '<span class="cnt">' + n + " papers</span></div>");
+
+      d.blocks.forEach(function (b) {
+        if (b.type === "break") {
+          out.push('<div class="interval"' + dd + '><b>' + esc(b.start) + "–" + esc(b.end || "") + "</b><span>" + b.label + "</span></div>");
+          return;
+        }
+        if (b.type === "ceremony") {
+          out.push('<article class="ses"' + dd + "><header>" +
+            '<div class="crumb"><span class="no">Plenary</span><span class="rm">All rooms</span></div>' +
+            "<h4>" + esc(b.title) + "</h4>" +
+            '<p class="when">' + esc(b.start) + "–" + esc(b.end) + " " + esc(TZ.label) + "</p>" +
+            '<div class="meta"><div><span class="k">Join</span><span class="v">' +
+              (b.link ? '<a href="' + esc(b.link) + '" rel="noopener">' + esc(b.link) + "</a>"
+                      : '<span class="blank"></span> <span class="muted">circulated before the conference</span>') +
+            "</span></div></div></header>" +
+            '<div class="tw"><table class="papers"><tbody>' +
+              b.run.map(function (r) {
+                return '<tr><td class="tm" style="width:64px">' + esc(r.t || "") + '</td><td class="ti">' + r.d + "</td></tr>";
+              }).join("") +
+            "</tbody></table></div></article>");
+          return;
+        }
+        out.push('<p class="slotlead"' + dd + ">Slot " + b.slot + " · " + esc(b.start) + "–" + esc(b.end) + " " + esc(TZ.label) + "</p>");
+        out.push('<div class="pair"' + dd + ">" + b.sessions.map(function (s) {
+          return sessionCard({ s: s, d: d, b: b });
+        }).join("") + "</div>");
+      });
+    });
+    document.getElementById("days").innerHTML = out.join("");
+  }());
+
+  /* per-session calendar buttons */
+  document.getElementById("days").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cal]");
+    if (!b) return;
+    var num = +b.getAttribute("data-cal");
+    var x = SESSIONS.filter(function (v) { return v.s.num === num; })[0];
+    if (x) icsSave("icccmla2026-session-" + num + ".ics", sessionEvent(x));
+  });
+
+  /* ---------------------------------------------------------- finder ---- */
+  (function () {
+    var box = document.getElementById("q"), out = document.getElementById("qres");
+    if (!SHOW_AUTHORS) {
+      document.getElementById("q-note").textContent = "Paper ID, title or session";
+      box.placeholder = "e.g. 435445, federated learning, session 12";
+    }
+    var index = PAPERS.map(function (r) {
+      return {
+        r: r,
+        hay: (SHOW_AUTHORS
+          ? [r.p.id, r.p.title, r.p.presenter, r.p.affiliation, r.p.country, r.s.title, "session " + r.s.num]
+          : [r.p.id, r.p.title, r.s.title, "session " + r.s.num]).join(" ").toLowerCase()
+      };
+    });
+
+    function hilite(text, needle) {
+      if (!text) return "";
+      var i = text.toLowerCase().indexOf(needle);
+      if (i < 0 || !needle) return esc(text);
+      return esc(text.slice(0, i)) + "<mark>" + esc(text.slice(i, i + needle.length)) +
+             "</mark>" + esc(text.slice(i + needle.length));
+    }
+
+    function draw(list, v) {
+      if (!list.length) {
+        out.innerHTML = '<p class="none">Nothing matches that. Try a Paper ID, a word from the title' +
+          (SHOW_AUTHORS ? ", a presenter's name, an institution or a country.</p>" : " or a session number.</p>");
+        return;
+      }
+      out.innerHTML = '<p class="hit">' + list.length + " of " + PAPERS.length + " papers</p>" +
+        '<div class="tw"><table class="papers"><thead><tr>' +
+        '<th class="c-id">Paper ID</th><th>' + TITLE_HEAD + '</th>' +
+        '<th class="c-t">Time</th><th>Session</th></tr></thead><tbody>' +
+        list.slice(0, 40).map(function (h) {
+          var r = h.r;
+          return "<tr>" +
+            '<td class="pid"><a href="#p' + esc(r.p.id) + '" data-go="' + esc(r.p.id) + '">' +
+              hilite(r.p.id, v) + "</a></td>" +
+            '<td class="ti"><span class="t' + (r.p.title ? "" : " tba") + '">' +
+              (r.p.title ? hilite(r.p.title, v) : "Title to be published") + "</span>" +
+            (SHOW_AUTHORS
+              ? '<span class="who"><b>' + hilite(r.p.presenter, v) + "</b>" +
+                (r.p.affiliation ? ' <span class="aff">· ' + hilite(r.p.affiliation, v) + "</span>" : "") +
+                (r.p.country ? ' <span class="aff">· ' + hilite(r.p.country, v) + "</span>" : "") +
+                "</span>"
+              : "") +
+            "</td>" +
+            '<td class="tm">' + esc(r.d.date.replace(" 2026", "")) + "<br>" + esc(r.at) + "</td>" +
+            '<td><a href="#' + esc(r.s.anchor) + '">Session ' + r.s.num + "</a><br>" +
+              '<span class="muted">Room ' + esc(r.s.room) + "</span></td></tr>";
+        }).join("") +
+        "</tbody></table></div>" +
+        (list.length > 40 ? '<p class="hit">Showing the first 40. Narrow the search to see the rest.</p>' : "");
+    }
+
+    box.addEventListener("input", function () {
+      var v = box.value.trim().toLowerCase();
+      if (!v) { out.innerHTML = ""; return; }
+      draw(index.filter(function (h) { return h.hay.indexOf(v) >= 0; }), v);
+    });
+    document.getElementById("qclear").addEventListener("click", function () {
+      box.value = ""; out.innerHTML = ""; box.focus();
+    });
+
+    /* clicking a result flashes the row it lands on */
+    out.addEventListener("click", function (e) {
+      var a = e.target.closest("[data-go]");
+      if (!a) return;
+      var row = document.getElementById("p" + a.getAttribute("data-go"));
+      if (!row) return;
+      document.querySelectorAll("tr.flash").forEach(function (t) { t.classList.remove("flash"); });
+      setTimeout(function () { row.classList.add("flash"); }, 350);
+    });
+  }());
+
+  /* ------------------------------------------------- live session mark -- */
+  (function () {
+    function tick() {
+      var now = new Date();
+      var iso = now.getFullYear() + "-" + String(now.getMonth() + 1).padStart(2, "0") +
+                "-" + String(now.getDate()).padStart(2, "0");
+      var utcMin = now.getUTCHours() * 60 + now.getUTCMinutes();
+      var confMin = ((utcMin + TZ.minutes) % 1440 + 1440) % 1440;
+      SESSIONS.forEach(function (x) {
+        var el = document.getElementById(x.s.anchor);
+        if (!el) return;
+        var on = (x.d.iso === iso) && confMin >= mins(x.s.start) && confMin < mins(x.s.end);
+        el.classList.toggle("live", on);
+      });
+    }
+    tick();
+    setInterval(tick, 30000);
+  }());
+
+  /* ------------------------------------------------------------ chrome -- */
+  var root = document.documentElement;
+  try {
+    var saved = localStorage.getItem("icccmla.theme");
+    if (saved) root.setAttribute("data-theme", saved);
+  } catch (e) {}
+  document.getElementById("theme").addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("icccmla.theme", next); } catch (e) {}
+  });
+
+  /* whole-conference calendar, offered from the hero facts */
+  var all = document.createElement("button");
+  all.className = "btn";
+  all.type = "button";
+  all.textContent = "＋ Add the whole programme to your calendar";
+  all.style.marginTop = "18px";
+  all.addEventListener("click", function () {
+    var body = SESSIONS.map(sessionEvent);
+    D.days.forEach(function (d) {
+      d.blocks.forEach(function (b) {
+        if (b.type !== "ceremony") return;
+        body.push(vevent("c" + d.iso + b.start, icsTime(d.iso, b.start), icsTime(d.iso, b.end),
+          M.acronym + " · " + b.title,
+          b.run.map(function (r) { return (r.t ? r.t + "  " : "") + r.d.replace(/<[^>]+>/g, ""); }).join("\n"),
+          "Online"));
+      });
+    });
+    icsSave("icccmla2026-programme.ics", body.join("\r\n"));
+  });
+  document.querySelector(".hero").appendChild(all);
+}());
+</script>
+
+<!-- ======================================================================
+     The masthead, and the local times on every session card.
+
+     It runs after the page's own script, reads the same window.ICCCMLA
+     data and writes into the same four hero elements, so nothing here has
+     to be kept in step by hand: change the plan, rebuild, and the masthead
+     follows like everything else. The styling lives in assets/icccmla.css
+     under CONFERENCE IDENTITY.
+     ====================================================================== -->
+<script>
+(function () {
+  var D = window.ICCCMLA;
+  if (!D) return;
+  var M = D.meta, TZ = M.tz;
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function el(id) { return document.getElementById(id); }
+
+  /* The conference's mark: a feedback loop. */
+  function mark(px) {
+    return '<svg viewBox="0 0 24 24" width="' + px + '" height="' + px + '" aria-hidden="true" focusable="false">' +
+      '<circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="2.1" ' +
+      'stroke-linecap="round" stroke-dasharray="40 14" transform="rotate(-96 12 12)"/>' +
+      '<path d="M12 0.9 15.9 4.2 12 7.5z" fill="currentColor"/></svg>';
+  }
+
+  /* ------------------------------------------------ the IEEE marks --- */
+  /* The logos are registered marks. They are shown exactly as supplied -
+     never redrawn, never recoloured - which is also why they sit on a
+     white plate rather than being lightened for the dark skin: IEEE blue
+     makes 6.5:1 on white and only 2.4:1 on the dark panel, and the fix for
+     that is the background, not the mark.
+
+     A mark that fails to load removes itself, so a missing file is never a
+     broken image; the co-sponsorship is stated in words either way. */
+  function cosponsorPlate() {
+    var cs = document.createElement("p");
+    cs.className = "cosponsor";
+
+    var marks = (M.marks || []).map(function (m) {
+      return '<img class="ieee" src="' + esc(m.src) + '" alt="' + esc(m.alt) + '">';
+    }).join("");
+
+    var words = esc(M.cosponsor).replace(/IEEE Germany Section/, "<b>IEEE Germany Section</b>");
+    if (M.record) {
+      var rec = "IEEE Conference Record #" + esc(M.record);
+      words += '<span class="rec">' + (M.recordUrl
+        ? '<a href="' + esc(M.recordUrl) + '" rel="noopener" target="_blank">' + rec + "</a>"
+        : rec) + "</span>";
+    }
+
+    cs.innerHTML = (marks ? '<span class="marks">' + marks + "</span>" : "") +
+      "<span class=\"words\">" + words + "</span>";
+
+    Array.prototype.forEach.call(cs.querySelectorAll("img.ieee"), function (img) {
+      img.addEventListener("error", function () {
+        var box = img.parentNode;
+        img.remove();
+        if (box && !box.querySelector("img")) box.remove();
+      });
+    });
+    return cs;
+  }
+
+  /* --------------------------------------------------------- top bar --- */
+  var brand = document.querySelector(".bar .brand");
+  if (brand) brand.innerHTML = mark(17) + "<span>" + esc(M.acronym) + "</span>";
+
+  /* -------------------------------------------------------- masthead --- */
+  /* "IEEE 8th International Conference on | Cybernetics, Cognition and
+     Machine Learning Applications" - split at the hinge rather than typed
+     out twice, so a change to META.name carries through. */
+  var name = M.name || "", lead = "", rest = name;
+  var hinge = name.indexOf(" on ");
+  if (hinge > -1) { lead = name.slice(0, hinge + 3); rest = name.slice(hinge + 4); }
+
+  if (el("hero-kicker")) el("hero-kicker").textContent = lead || (M.acronym + " programme");
+  if (el("hero-title"))  el("hero-title").innerHTML = esc(rest);
+
+  var bits = [];
+  if (M.edition) bits.push(esc(M.edition));
+  if (M.dates)   bits.push(esc(M.dates.replace(/\s-\s/, "–")));
+  if (M.mode)    bits.push(esc(M.mode));
+  bits.push('all times <span class="clock">' + esc(TZ.label) + " " + esc(TZ.offset) + "</span>");
+
+  var lede = el("hero-lede");
+  if (lede) {
+    lede.innerHTML = bits.join('<span class="sep">·</span>');
+    if (M.cosponsor) {
+      lede.insertAdjacentElement("afterend", cosponsorPlate());
+    }
+  }
+
+  /* --------------------------------------------------- the dimensions --- */
+  var papers = 0, sessions = 0;
+  D.days.forEach(function (d) {
+    d.blocks.forEach(function (b) {
+      if (b.type !== "sessions") return;
+      b.sessions.forEach(function (s) { sessions++; papers += s.papers.length; });
+    });
+  });
+  var countries = D.zones.filter(function (z) { return z.count > 0; });
+
+  var facts = [
+    [papers, "papers"],
+    [sessions, "sessions"],
+    [D.rooms.length, D.rooms.length === 1 ? "room" : "parallel rooms"],
+    [countries.length, "countries"],
+    [D.days.length, D.days.length === 1 ? "day" : "days"]
+  ];
+  if (el("hero-facts")) {
+    el("hero-facts").innerHTML = facts.map(function (f) {
+      return '<div class="fact"><span class="v">' + esc(f[0]) + '</span>' +
+             '<span class="k">' + esc(f[1]) + "</span></div>";
+    }).join("");
+  }
+
+  /* ----------------------------------------------------- the countries --- */
+  /* ISO codes, not flag emoji: Windows draws no flags. */
+  var ISO = {
+    "India": "IN", "United States": "US", "Uzbekistan": "UZ", "Turkey": "TR",
+    "United Kingdom": "GB", "Algeria": "DZ", "Bangladesh": "BD", "Germany": "DE",
+    "Austria": "AT", "China": "CN", "Nepal": "NP", "Netherlands": "NL",
+    "Sri Lanka": "LK", "United Arab Emirates": "AE", "Pakistan": "PK",
+    "Japan": "JP", "Singapore": "SG", "Malaysia": "MY", "Indonesia": "ID",
+    "Saudi Arabia": "SA", "Egypt": "EG", "South Africa": "ZA", "France": "FR",
+    "Italy": "IT", "Spain": "ES", "Poland": "PL", "Sweden": "SE", "Ireland": "IE",
+    "Nigeria": "NG", "Morocco": "MA", "Canada": "CA", "Brazil": "BR", "Australia": "AU"
+  };
+  function code(place) {
+    if (ISO[place]) return ISO[place];
+    return place.replace(/[^A-Za-z]/g, "").slice(0, 2).toUpperCase();
+  }
+
+  var clocks = {};
+  countries.forEach(function (z) { clocks[z.minutes] = 1; });
+  var nClocks = Object.keys(clocks).length;
+
+  var strip = document.createElement("div");
+  strip.className = "countries";
+  strip.innerHTML =
+    '<p class="cap">Presenters are joining from ' + countries.length +
+      " countries across " + nClocks + " different clocks.</p><ul>" +
+    countries.map(function (z) {
+      return '<li class="ctry" title="' + esc(z.name) + '">' +
+        '<span class="cc">' + esc(code(z.place)) + "</span>" +
+        "<span>" + esc(z.place) + '</span><span class="n">' + esc(z.count) + "</span></li>";
+    }).join("") + "</ul>";
+
+  if (el("hero-facts")) el("hero-facts").insertAdjacentElement("afterend", strip);
+
+  /* ------------------------------------- local times on every session --- */
+  /* The conference clock tells a presenter in Hyderabad or Tashkent
+     nothing until they have done the arithmetic. Every session card does
+     it for them - but only for the countries that session's own presenters
+     are in, plus the reader's own clock, which is the one that matters
+     most and is on no list. */
+  window.ICCCMLA_ZONESTRIP = (function () {
+    var ZONE = {};
+    D.zones.forEach(function (z) { if (z.count > 0) ZONE[z.place] = z; });
+
+    function hhmm(m) {
+      var day = 0;
+      while (m < 0)     { m += 1440; day--; }
+      while (m >= 1440) { m -= 1440; day++; }
+      return {
+        t: String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"),
+        d: day
+      };
+    }
+    function mins(h) { return (+h.slice(0, 2)) * 60 + (+h.slice(3, 5)); }
+
+    /* The reader's own offset, worked out on the conference date itself so
+       that summer time is the browser's problem rather than an assumption. */
+    function readerMinutes(iso, start) {
+      var p = iso.split("-"), s = start.split(":");
+      var utc = Date.UTC(+p[0], +p[1] - 1, +p[2], +s[0], +s[1]) - TZ.minutes * 60000;
+      return -new Date(utc).getTimezoneOffset();
+    }
+    function chip(place, m, you) {
+      var r = hhmm(m);
+      return '<span class="z' + (you ? " you" : "") + '"><b>' + esc(r.t) + "</b>" +
+        (r.d ? '<span class="d">' + (r.d > 0 ? "+1 day" : "−1 day") + "</span>" : "") +
+        "<span>" + esc(place) + "</span></span>";
+    }
+
+    /* Returns the markup for one session, or "" if no presenter in it has
+       a country on file. */
+    return function (s, iso) {
+      var seen = {}, html = [];
+      s.papers.forEach(function (p) {
+        var z = ZONE[p.country];
+        if (!z || seen[z.minutes]) return;
+        seen[z.minutes] = 1;
+        html.push(chip(z.place, mins(s.start) - TZ.minutes + z.minutes, false));
+      });
+      if (!html.length) return "";
+      var me = readerMinutes(iso, s.start);
+      if (!seen[me]) html.push(chip("your time", mins(s.start) - TZ.minutes + me, true));
+      return '<p class="zones"><span class="cap">Starts at</span>' + html.join("") + "</p>";
+    };
+  }());
+
+  D.days.forEach(function (d) {
+    d.blocks.forEach(function (b) {
+      if (b.type !== "sessions") return;
+      b.sessions.forEach(function (s) {
+        var card = document.querySelector('article.ses[data-ses="' + s.num + '"]');
+        if (!card) return;
+        var when = card.querySelector(".when");
+        if (!when) return;
+        var html = window.ICCCMLA_ZONESTRIP(s, d.iso);
+        if (html) when.insertAdjacentHTML("afterend", html);
+      });
+    });
+  });
+
+  /* --------------------------------------------------------- day tabs --- */
+  /* Fifty-six session cards is a long scroll. The tabs hide a day rather
+     than re-rendering it, so nothing typed, opened or linked to is lost -
+     and a link to a session on the hidden day still works, because
+     choosing a day is only ever a filter on what is already there. */
+  var VIEWS = [document.getElementById("glance-grid"), document.getElementById("days")];
+
+  function showDay(which) {
+    VIEWS.forEach(function (v) { if (v) v.setAttribute("data-show", which); });
+    Array.prototype.forEach.call(document.querySelectorAll(".daytabs .dt"), function (b) {
+      var on = b.getAttribute("data-day") === which;
+      b.classList.toggle("on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    try { localStorage.setItem("icccmla2026.day", which); } catch (e) {}
+  }
+
+  function buildTabs(box) {
+    if (!box) return;
+    var html = '<button class="dt on" type="button" data-day="all" aria-pressed="true">Both days</button>';
+    D.days.forEach(function (d, i) {
+      html += '<button class="dt" type="button" data-day="' + (i + 1) + '" aria-pressed="false">' +
+        esc(d.tag) + ' <span class="dim">' + esc(d.weekday) + " " + esc(d.date) + "</span></button>";
+    });
+    box.innerHTML = html;
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest(".dt") : null;
+      if (b) showDay(b.getAttribute("data-day"));
+    });
+  }
+  buildTabs(document.getElementById("daytabs"));
+  buildTabs(document.getElementById("daytabs2"));
+
+  /* A link straight to a session must never land on a hidden card. */
+  function revealFor(hash) {
+    if (!hash) return;
+    var card = document.querySelector('article.ses' + hash.replace(/[^#\w-]/g, ""));
+    if (card && card.offsetParent === null) showDay("all");
+  }
+  window.addEventListener("hashchange", function () { revealFor(location.hash); });
+
+  var saved = null;
+  try { saved = localStorage.getItem("icccmla2026.day"); } catch (e) {}
+  if (saved && !location.hash) showDay(saved); else showDay("all");
+  revealFor(location.hash);
+
+  /* ---------------------------------------------------- track legend --- */
+  /* Only three tracks carry a colour - the palette was validated and no
+     larger set clears the colourblind-separation gate for scattered chips.
+     Everything else shares one neutral, and every chip on the page names
+     its track in words, so the colour is a shortcut and never the message. */
+  var legend = document.getElementById("track-legend");
+  if (legend && D.tracks && D.tracks.length) {
+    var coloured = D.tracks.filter(function (t) { return t.slot > 0; });
+    var rest = D.tracks.filter(function (t) { return t.slot === 0 && t.sessions > 0; });
+    var html = coloured.map(function (t) {
+      return '<span class="lg" data-trk="' + t.slot + '"><i></i>' + esc(t.name) +
+        '<span class="n">' + t.sessions + "</span></span>";
+    }).join("");
+    if (rest.length) {
+      html += '<span class="lg" data-trk="0" title="' +
+        esc(rest.map(function (t) { return t.name; }).join(" · ")) +
+        '"><i></i>Other tracks<span class="n">' +
+        rest.reduce(function (a, t) { return a + t.sessions; }, 0) + "</span></span>";
+    }
+    legend.innerHTML = '<span class="cap">Track</span>' + html;
+  }
+}());
+</script>
+<script>
+/* Author copy: no copying, saving, printing or view-source from the page.
+   Typing in the search box still works, including paste. */
+(function () {
+  function editable(t) { return t && t.closest && t.closest("input, textarea"); }
+  ["copy", "cut", "contextmenu", "selectstart", "dragstart"].forEach(function (ev) {
+    document.addEventListener(ev, function (e) { if (!editable(e.target)) e.preventDefault(); });
+  });
+  document.addEventListener("keydown", function (e) {
+    var k = (e.key || "").toLowerCase(), mod = e.ctrlKey || e.metaKey;
+    var block =
+      (mod && ["c", "x", "a", "p", "s", "u"].indexOf(k) > -1 &&
+        !(editable(e.target) && ["c", "x", "a"].indexOf(k) > -1)) ||
+      (mod && e.shiftKey && ["i", "j", "c"].indexOf(k) > -1) ||
+      k === "f12";
+    if (block) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+  /* PrintScreen cannot be cancelled; clearing the clipboard afterwards is
+     the most a page can do, and only where the browser allows it. */
+  document.addEventListener("keyup", function (e) {
+    if (e.key === "PrintScreen" && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText("").catch(function () {});
+    }
+  });
+}());
+</script>
+</body>
+</html>
