@@ -804,7 +804,6 @@ body::after {
   function sessionCard(x) {
     var s = x.s;
     var chair = s.chair ? esc(s.chair) : '<span class="blank"></span>';
-    var cochair = s.cochair ? esc(s.cochair) : '<span class="blank"></span>';
     var link = s.link
       ? '<a href="' + esc(s.link) + '" rel="noopener">' + esc(s.link) + "</a>"
       : '<span class="blank"></span> <span class="muted">circulated before the conference</span>';
@@ -823,8 +822,7 @@ body::after {
           esc(s.start) + "–" + esc(s.end) + " " + esc(TZ.label) +
           ' <span>· ' + s.papers.length + " papers</span></p>" +
         '<div class="meta">' +
-          '<div><span class="k">Chair 1</span><span class="v">' + chair + "</span></div>" +
-          '<div><span class="k">Chair 2</span><span class="v">' + cochair + "</span></div>" +
+          '<div><span class="k">Chair</span><span class="v">' + chair + "</span></div>" +
           '<div><span class="k">Join</span><span class="v">' + link + "</span></div>" +
         "</div>" +
         '<div class="acts">' +
