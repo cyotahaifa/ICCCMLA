@@ -339,10 +339,18 @@ body::after {
         or present in another session, <b>without prior written approval</b> from the
         Conference Chair.
       </p>
+      <p>
+        <b>Do not ask another session's chair to fit you in.</b> A chair has no authority to admit
+        a paper that is not on their list, and pressing one to make an exception puts them in an
+        impossible position in front of their own presenters. However urgent your reason, the chair
+        is not the person who can help you — only the Conference Chair can move a paper, and only
+        in writing.
+      </p>
       <p class="hard">
-        A presentation given in any session other than your own <b>will not be counted</b>.
-        It earns no certificate and the paper is reported to the committee as absent —
-        even though you presented.
+        A presentation given in any session other than your own <b>will not be counted</b>, with or
+        without that chair's goodwill. It earns no certificate and the paper is reported to the
+        committee as <b>absent</b> — even though you presented. An author who pressures a chair into
+        admitting them may also be <b>debarred</b> from presenting at all.
       </p>
       <p>
         <b>If anything goes wrong, e-mail us — do not improvise.</b>
@@ -434,6 +442,14 @@ body::after {
         beginning — authors will appear right up to their own slot, sometimes several at once, and
         a presenter left waiting loses part of their ten minutes. They are asked to rename
         themselves <span class="mono">PaperID — Name</span> so you can identify them quickly.
+      </p>
+      <p>
+        <b>Admit only the papers on your own list.</b> Authors from other sessions do sometimes
+        press a chair to fit them in, and it is not yours to grant — only the Conference Chair can
+        move a paper, in writing. Send them to
+        <a id="rule-mail-4" href="#">the conference secretariat</a> and carry on with your own list.
+        A paper presented in the wrong session is marked absent regardless, so letting someone in
+        does them no favour at all.
       </p>
       <p>
         If you cannot attend, or will be late, write to
@@ -585,7 +601,7 @@ body::after {
   /* The "e-mail us" rules are useless without an address, so they show the
      address itself and fall back to plain words if META.contact is empty. */
   (function () {
-    ["rule-mail-1", "rule-mail-2", "rule-mail-3"].forEach(function (id) {
+    ["rule-mail-1", "rule-mail-2", "rule-mail-3", "rule-mail-4"].forEach(function (id) {
       var a = document.getElementById(id);
       if (!a) return;
       if (M.contact) {
