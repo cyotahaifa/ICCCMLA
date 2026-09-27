@@ -255,6 +255,7 @@ body::after {
     <a href="#glance">At a glance</a>
     <a href="#zones">Time zones</a>
     <a href="#presenters">Presenters</a>
+    <a href="#chairs">Chairs</a>
     <a href="#programme">Programme</a>
   </nav>
   <button class="iconbtn" id="theme" type="button" aria-label="Switch between dark and light">◐ Theme</button>
@@ -361,8 +362,12 @@ body::after {
             <li>Join on your session's link, not the inaugural link. The links are listed against each session below.</li>
             <li>Rename yourself to <span class="mono">PaperID — Your Name</span> so the chair can admit you quickly.</li>
             <li>Test your microphone, camera and screen share before your slot, not during it.</li>
-            <li>If the link will not let you in, e-mail the secretariat straight away rather than
-                joining a different session.</li>
+            <li><b>Expect a short wait to be let in.</b> The chair admits people by hand and may
+                have several arriving at once, so stay in the waiting room rather than leaving and
+                rejoining. An empty screen does not mean the session has not started.</li>
+            <li>If you are not admitted, or anything else goes wrong, <b>e-mail us immediately</b> at
+                <a id="rule-mail-2" href="#">the conference secretariat</a>, quoting your Paper ID —
+                rather than joining a different session.</li>
           </ul>
         </li>
         <li><b>Your slot is fixed.</b>
@@ -387,6 +392,10 @@ body::after {
         <li><b>Attendance is what earns the certificate.</b>
           <ul>
             <li>The chair marks every paper present, late or absent. An absent paper is reported to the committee.</li>
+            <li><b>Take a screenshot while you are presenting</b>, with your slide on screen and the
+                date and time visible — your computer's clock, or the meeting window's own clock.
+                Keep it. It is the simplest evidence that you presented if your certificate or record
+                is ever queried later.</li>
             <li>Registration and the completed IEEE eCopyright form must both be in place before the paper goes forward to IEEE <i>Xplore</i>.</li>
           </ul>
         </li>
@@ -396,6 +405,35 @@ body::after {
           </ul>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================ 5 -->
+  <section id="chairs">
+    <div class="sechead">
+      <h2>For session chairs</h2>
+    </div>
+
+    <div class="rule">
+      <h3>Stay for the whole session, even if the room looks empty</h3>
+      <p>
+        Presenters are asked to arrive ten minutes early, but in practice many will join close to
+        <b>their own paper's time</b> rather than at the opening minute. A room that looks empty when
+        you start is therefore normal, and is <b>not</b> a reason to leave or to close the meeting.
+        Please stay from the published start to the published end, and keep the meeting open for the
+        full slot.
+      </p>
+      <p>
+        <b>Admit presenters promptly.</b> Watch the waiting list throughout, not only at the
+        beginning — authors will appear right up to their own slot, sometimes several at once, and
+        a presenter left waiting loses part of their ten minutes. They are asked to rename
+        themselves <span class="mono">PaperID — Name</span> so you can identify them quickly.
+      </p>
+      <p>
+        If you cannot attend, or will be late, write to
+        <a id="rule-mail-3" href="#">the conference secretariat</a> as early as you can so that a
+        replacement chair can be arranged.
+      </p>
     </div>
   </section>
 
@@ -541,7 +579,7 @@ body::after {
   /* The "e-mail us" rules are useless without an address, so they show the
      address itself and fall back to plain words if META.contact is empty. */
   (function () {
-    ["rule-mail-1", "rule-mail-2"].forEach(function (id) {
+    ["rule-mail-1", "rule-mail-2", "rule-mail-3"].forEach(function (id) {
       var a = document.getElementById(id);
       if (!a) return;
       if (M.contact) {
