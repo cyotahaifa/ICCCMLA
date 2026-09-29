@@ -668,7 +668,7 @@ body::after {
                  "Nine sessions run", "Ten sessions run", "Eleven sessions run", "Twelve sessions run"];
     var lead = words[D.rooms.length] || (D.rooms.length + " sessions run");
     document.getElementById("glance-lead").textContent =
-      lead + " in parallel at peak, each in its own room on its own joining link. " +
+      lead + " in parallel in every slot, each in its own room on its own joining link. " +
       "Select a session to jump to its paper list.";
 
     if (SESSIONS.some(function (x) { return x.s.provisional; })) {
