@@ -64,7 +64,6 @@
      session 5  -> Dr. Vishwanath Bijalwan
      session 6  -> Dr. Sibendu Samanta
      session 7  -> Dr. Abhishek Kumar Tripathi
-     session 6  -> https://meet.google.com/pca-xvfk-xzd  (Dr. Sibendu Samanta)
      session 10 -> A. Shiva Prasad
      session 12 -> Dr. KiranKumar Eranki
      session 13 -> B. Sree Saranya
@@ -77,7 +76,6 @@
      session 26 -> Dr. Mahesh K. Singh
      session 28 -> Dr. Gnana Prasuna Vattipalli
      session 30 -> Dr. Prabhat Thakur
-     session 28 -> https://meet.google.com/jby-gbtt-svd  (Dr. Gnana Prasuna Vattipalli)
      session 34 -> Dr. Chinmaya Dash
      session 45 -> Dr. Anurodh Kumar
      session 46 -> Dr. Amarendra Kumar Mishra
@@ -86,6 +84,7 @@
 
    Joining links published for the chairs who have sent them (27 September):
      session 5  -> https://meet.google.com/esz-kzzt-pmv  (Dr. Vishwanath Bijalwan)
+     session 6  -> https://meet.google.com/pca-xvfk-xzd  (Dr. Sibendu Samanta)
      session 10 -> https://meet.google.com/yyk-qzsq-vrr  (A. Shiva Prasad)
      session 12 -> https://meet.google.com/bnk-rpeo-ryq  (Dr. KiranKumar Eranki)
      session 13 -> https://meet.google.com/rcs-wumr-nxu  (B. Sree Saranya)
@@ -94,6 +93,7 @@
      session 19 -> https://meet.google.com/kgx-pjrg-jtn  (Dr. Sanjeev Kumar)
      session 25 -> https://meet.google.com/hdf-dwfs-ydo  (Rajesh Subramanian)
      session 26 -> https://meet.google.com/mod-jwtr-yjv  (Dr. Mahesh K. Singh)
+     session 28 -> https://meet.google.com/jby-gbtt-svd  (Dr. Gnana Prasuna Vattipalli)
      session 34 -> https://meet.google.com/hnp-tkty-vsr  (Dr. Chinmaya Dash)
      session 45 -> https://meet.google.com/ovr-segq-xfx  (Dr. Anurodh Kumar)
      session 49 -> https://meet.google.com/dkg-pvyw-zix  (Dr. Birendra Kumar)
