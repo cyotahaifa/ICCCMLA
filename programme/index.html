@@ -452,6 +452,14 @@ body::after {
         does them no favour at all.
       </p>
       <p>
+        <b>Fill in the attendance and evaluation sheet.</b> Each session card below has a
+        <b>Sheet</b> link to your session's own spreadsheet, with the running order already filled in.
+        For every paper, mark it Present, Late or Absent and note who presented. Score the content,
+        presentation and answers to questions, and nominate at most one or two papers for the best paper award.
+        Return it to <a id="rule-mail-5" href="#">the conference secretariat</a> within an hour of
+        your session ending.
+      </p>
+      <p>
         If you cannot attend, or will be late, write to
         <a id="rule-mail-3" href="#">the conference secretariat</a> as early as you can so that a
         replacement chair can be arranged.
@@ -601,7 +609,7 @@ body::after {
   /* The "e-mail us" rules are useless without an address, so they show the
      address itself and fall back to plain words if META.contact is empty. */
   (function () {
-    ["rule-mail-1", "rule-mail-2", "rule-mail-3", "rule-mail-4"].forEach(function (id) {
+    ["rule-mail-1", "rule-mail-2", "rule-mail-3", "rule-mail-4", "rule-mail-5"].forEach(function (id) {
       var a = document.getElementById(id);
       if (!a) return;
       if (M.contact) {
@@ -885,6 +893,9 @@ body::after {
           '<div><span class="k">Chair</span><span class="v">' + chair + "</span></div>" +
           (s.cochair ? '<div><span class="k">Co-chair</span><span class="v">' + esc(s.cochair) + "</span></div>" : "") +
           '<div><span class="k">Join</span><span class="v">' + link + "</span></div>" +
+          /* The chair's attendance and evaluation sheet, one file per session. */
+          '<div><span class="k">Sheet</span><span class="v"><a href="chair-sheets/S' + String(s.num).padStart(2, "0") +
+            '.xlsx" download>Attendance and evaluation sheet</a> <span class="muted">(.xlsx, for the session chair)</span></span></div>' +
         "</div>" +
         '<div class="acts">' +
           '<button class="btn" type="button" data-cal="' + s.num + '">＋ Add to calendar</button>' +
