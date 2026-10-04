@@ -835,7 +835,7 @@ body::after {
        the session and points back here rather than carrying the paper list. */
     var desc = s.papers.length + " papers. Paper list: " +
       location.href.split("#")[0] + "#" + s.anchor;
-    if (s.chair) desc = "Chair: " + s.chair + "\n\n" + desc;
+    if (s.chair) desc = "Chair: " + s.chair + (s.cochair ? "\nCo-chair: " + s.cochair : "") + "\n\n" + desc;
     if (s.link) desc += "\n\nJoin: " + s.link;
     return vevent("s" + s.num, icsTime(iso, s.start), icsTime(iso, s.end),
       M.acronym + " · Session " + s.num + " · " + s.title,
@@ -883,6 +883,7 @@ body::after {
           ' <span>· ' + s.papers.length + " papers</span></p>" +
         '<div class="meta">' +
           '<div><span class="k">Chair</span><span class="v">' + chair + "</span></div>" +
+          (s.cochair ? '<div><span class="k">Co-chair</span><span class="v">' + esc(s.cochair) + "</span></div>" : "") +
           '<div><span class="k">Join</span><span class="v">' + link + "</span></div>" +
         "</div>" +
         '<div class="acts">' +
