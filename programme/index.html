@@ -547,6 +547,9 @@ body::after {
   var PAPERS = [];
   SESSIONS.forEach(function (x) {
     x.s.papers.forEach(function (p, i) {
+      /* A paper moved after the programme was published keeps its struck-through row in
+         the old session, but search and paper links go to its new slot only. */
+      if (p.moved) return;
       PAPERS.push({ p: p, s: x.s, d: x.d, i: i, at: hhmm(mins(x.s.start) + i * SLOT) });
     });
   });
@@ -862,6 +865,15 @@ body::after {
       var title = p.title
         ? '<span class="t">' + esc(p.title) + "</span>"
         : '<span class="t tba">Title to be published</span>';
+      if (p.moved) {
+        /* Struck through where it was, with a pointer to where it went. Its slot stays
+           so every later paper in the session keeps its published time. */
+        return '<tr class="moved" id="p' + esc(p.id) + '-was"><td class="n">' + (i + 1) + "</td>" +
+          '<td class="tm"><s>' + esc(at) + "</s></td>" +
+          '<td class="pid"><s>' + esc(p.id) + "</s></td>" +
+          '<td class="ti"><s>' + title + "</s>" +
+          ' <span class="chip warn">' + esc(p.moved) + "</span></td></tr>";
+      }
       return '<tr id="p' + esc(p.id) + '"><td class="n">' + (i + 1) + "</td>" +
         '<td class="tm">' + esc(at) + "</td>" +
         '<td class="pid">' + esc(p.id) + "</td>" +
@@ -911,7 +923,7 @@ body::after {
     var out = [];
     D.days.forEach(function (d, di) {
       var n = 0;
-      d.blocks.forEach(function (b) { if (b.type === "sessions") b.sessions.forEach(function (s) { n += s.papers.length; }); });
+      d.blocks.forEach(function (b) { if (b.type === "sessions") b.sessions.forEach(function (s) { n += s.papers.filter(function (p) { return !p.moved; }).length; }); });
       /* data-day on every block is what the day tabs filter on. */
       var dd = ' data-day="' + (di + 1) + '"';
       out.push('<div class="dayhead"' + dd + '><span class="tag">' + esc(d.tag) + "</span>" +
@@ -1189,7 +1201,7 @@ body::after {
   D.days.forEach(function (d) {
     d.blocks.forEach(function (b) {
       if (b.type !== "sessions") return;
-      b.sessions.forEach(function (s) { sessions++; papers += s.papers.length; });
+      b.sessions.forEach(function (s) { sessions++; papers += s.papers.filter(function (p) { return !p.moved; }).length; });
     });
   });
   var countries = D.zones.filter(function (z) { return z.count > 0; });
