@@ -18,3 +18,7 @@ Reviewer Data/
 # Private working copy of the programme: attendee sheets, the full data with
 # names, chair e-mail data and the chair pages. Only programme/ is published.
 icccmla-2026-site/
+
+# Certificate sources: signature scans and the unencrypted generator.
+# Only the password-protected certificates/index.html is ever published.
+icccmla-2026-certificates/
